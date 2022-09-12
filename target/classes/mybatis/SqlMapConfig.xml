@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  <configuration>
+
+	<typeAliases>
+		<typeAlias type="qna.model.QnaBean" alias="MyQna"/>
+		
+		<!-- 없는 bean 쓰면 에러남
+		<typeAlias type="member.model.MemberBean" alias="MyMember"/> 
+		<typeAlias type="seller.model.SellerBean" alias="MySeller"/> 
+		<typeAlias type="product.model.AlcoholBean" alias="MyAlcohol"/>
+		<typeAlias type="product.model.SnackBean" alias="MySnack"/>
+		 -->
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mybatis/product.xml"/>
+		<mapper resource="mybatis/member.xml"/>
+		<mapper resource="mybatis/seller.xml"/>
+		<mapper resource="mybatis/qna.xml"/>
+		<!-- <mapper resource="mybatis/sorder.xml"/> -->
+		<!-- <mapper resource="mybatis/sorderdetail.xml"/> -->
+	</mappers>
+  </configuration>
+
+<!-- SqlMapConfig.xml -->
