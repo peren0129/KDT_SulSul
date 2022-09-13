@@ -6,16 +6,17 @@ list.jsp
 
 <center>
 	<h2>QNA</h2>
-	<br> <small>글목록(전체 글: ${pageInfo.totalCount})</small>
-	<table border="1">
+	<small>글목록(전체 글: ${pageInfo.totalCount})</small>
+	<hr style="width: 1200">
+	<table border="0">
 		<tr>
-			<th>번호</th>
-			<th>문의날짜</th>
-			<th>카테고리</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>조회수</th>
-			<th>문의상태</th>
+			<!-- <th>번호</th> -->
+			<th width="100">문의날짜</th>
+			<th width="200">카테고리</th>
+			<th width="500">제목</th>
+			<th width="70">작성자</th>
+			<th width="70">조회수</th>
+			<th width="100">문의상태</th>
 		</tr>
 
 		<c:if test="${ fn:length(lists) eq 0 }">
@@ -23,20 +24,34 @@ list.jsp
 		</c:if>
 		<c:if test="${ fn:length(lists) > 0 }">
 			<c:forEach var="list" items="${ lists }">
-				<tr>
-					<td align="right">${list.num }</td>
+				<tr style="text-align: center;">
+					<%-- <td align="right">${list.num }</td> --%>
 					<!-- &nbsp -->
 					<td><fmt:parseDate var="reg_date" value="${ list.reg_date }"
 							pattern="yyyy-MM-dd" /> <fmt:formatDate var="formatDate"
 							value="${ reg_date }" pattern="yyyy-MM-dd" /> ${formatDate}</td>
-					<td>${ list.cate3 }</td>
-					<td><c:if test="${ list.re_level > 0 }">
+					<td>[${ list.cate }]</td>
+					<td id="sub" style="text-align: left !important;">
+					<%-- t
+					<c:if test="${ list.re_level > 0 }">
 							<fmt:parseNumber var="re_level" value="${ list.re_level }" />
 							<img src="resources/images/level.gif" width="${ re_level*20 }"
 								height="15">
 							<img src="resources/images/re.gif">
-						</c:if> <a
-						href="getData.qna?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a></td>
+					</c:if>
+					 --%>
+				
+				
+				
+			<!-- 관리자 아이디로 로그인시 ~~ 로 수정  -->
+					<c:if test="${fn:contains(list.cateopen, '비밀글')}">
+						<img src="resources/images/00_secret.png" align="absmiddle">
+					</c:if>					
+					<a href="detail.qna?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a></td>
+					<c:if test="${list.image != null}">
+						<img src="resources/images/00_attach_file.png" align="absmiddle">
+					</c:if>					
+
 					<td>${list.writer}</td>
 					<td align="right">${ list.readcount }</td>
 					<td align="center">${ list.reply }</td>
@@ -57,6 +72,5 @@ list.jsp
 	</form>
 	<!-- <br> <a href="write.qna">문의하기</a> -->
 </center>
-<br>
-<br>
+
 <center>${pageInfo.pagingHtml }</center>

@@ -3,19 +3,21 @@ package qna.model;
 import java.sql.Timestamp;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 public class QnaBean {
 	private String num;
 	
 	private String writer; //작성자, members의 num과 연결
-	private String cate1; //구매자/판매자
-	private String cate2; //비밀글/전체공개
-	private String cate3; //회원/정보관리,배송,반품/환불/교환/AS,영수증/증빙서류,상품/이벤트,키타
-	
-	@NotEmpty(message = "제목을 입력해주세요.")
+	private String cateuser; //구매자/판매자
+	private String cateopen; //비밀글/전체공개
+	//@NotEmpty(message = "카테고리를 선택하세요.")
+	private String cate; //회원/정보관리,배송,반품/환불/교환/AS,영수증/증빙서류,상품/이벤트,키타
+	@NotEmpty(message = "제목을 입력하세요.")
 	private String subject;
 	private String image;
 	private String checkimage; //자동 등록 방지 이미지
+	@NotEmpty(message = "내용을 입력하세요.")
 	private String content;
 	private Timestamp reg_date;
 	private String readcount;
@@ -23,6 +25,20 @@ public class QnaBean {
 	private String re_step; //최신순, 낮은 번호가 최신
 	private String re_level; //원글0, 답글1, 답답글2
 	private String reply;
+	
+	
+	private MultipartFile upload;
+	public MultipartFile getUpload() {
+		return upload;
+	}
+	public void setUpload(MultipartFile upload) { // upload=a.jpg X
+		System.out.println("setUpload(MultipartFile upload)");
+		this.upload = upload;
+		System.out.println("setUpload upload:" + upload);
+		System.out.println("upload.getName():"+upload.getName());
+		System.out.println("upload.getOriginalFilename():"+upload.getOriginalFilename());
+		this.image = upload.getOriginalFilename();
+	}
 	
 	public String getNum() {
 		return num;
@@ -36,23 +52,23 @@ public class QnaBean {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public String getCate1() {
-		return cate1;
+	public String getCateuser() {
+		return cateuser;
 	}
-	public void setCate1(String cate1) {
-		this.cate1 = cate1;
+	public void setCateuser(String cateuser) {
+		this.cateuser = cateuser;
 	}
-	public String getCate2() {
-		return cate2;
+	public String getCateopen() {
+		return cateopen;
 	}
-	public void setCate2(String cate2) {
-		this.cate2 = cate2;
+	public void setCateopen(String cateopen) {
+		this.cateopen = cateopen;
 	}
-	public String getCate3() {
-		return cate3;
+	public String getCate() {
+		return cate;
 	}
-	public void setCate3(String cate3) {
-		this.cate3 = cate3;
+	public void setCate(String cate) {
+		this.cate = cate;
 	}
 	public String getSubject() {
 		return subject;
@@ -114,4 +130,5 @@ public class QnaBean {
 	public void setReply(String reply) {
 		this.reply = reply;
 	}
+
 }

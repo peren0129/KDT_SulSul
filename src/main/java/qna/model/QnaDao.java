@@ -31,6 +31,10 @@ public class QnaDao {
 		return totalCount;
 	}
 
+	public void updateReadcount(String num) {
+		sqlSessionTemplate.update(namespace+".addReadcount",num);
+	}
+	
 	public void insertData(QnaBean qna) {
 		System.out.println("insert 2");
 		sqlSessionTemplate.insert(namespace+".insertData", qna);

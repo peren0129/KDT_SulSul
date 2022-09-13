@@ -33,7 +33,7 @@ function back() {
 		<table border="1">
 			<tr>
 				<td>말머리</td>
-				<td><select name="cate3">
+				<td><select name="cate">
 						<option value="회원/정보관리">회원/정보관리</option>
 						<option value="배송">배송</option>
 						<option value="반품/환불/교환/AS">반품/환불/교환/AS</option>
@@ -44,7 +44,7 @@ function back() {
 			</tr>
 			<tr>
 				<td>공개여부</td>
-				<td><select name="cate2">
+				<td><select name="cateopen">
 						<option value="전체공개">전체공개
 						<option value="비밀글">비밀글
 				</select></td>

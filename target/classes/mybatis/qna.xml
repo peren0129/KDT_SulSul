@@ -7,33 +7,62 @@
 
 	<select id="getAllData" resultType="MyQna">
 		select * from qna
-		order by num
-		desc
+		<if test="whatColumn == 'subject'">
+			where subject like #{keyword}
+		</if>
+		<if test="whatColumn == 'writer'">
+			where writer like #{keyword}
+		</if>
+		order by num desc
 	</select>
 
 	<select id="getTotalCount" resultType="int">
 		select count(*) from qna
+		<if test="whatColumn == 'subject'">
+			where subject like #{keyword}
+		</if>
+		<if test="whatColumn == 'writer'">
+			where writer like #{keyword}
+		</if>
 	</select>
+
+	<update id="addReadcount">
+		update board
+		set readcount = readcount+1
+		where num = #{num}
+	</update>
 
 	<insert id="insertData">
 		insert into
-		qna(num,writer,cate1,cate2,cate3,subject,content,reg_date,readcount,ref,re_step,re_level,reply)
-		values(q_seq.nextval,#{writer},#{cate1},#{cate2},#{cate3},#{subject},
-		#{content},#{reg_date},#{readcount,jdbcType=VARCHAR},q_seq.currval,0,0,'no')
+		qna(num,writer,cateopen,cate,subject,content,reg_date,readcount,ref,re_step,re_level,reply)
+		values(q_seq.nextval,#{writer},#{cateopen},#{cate},#{subject},
+		#{content},#{reg_date},#{readcount,jdbcType=VARCHAR},q_seq.currval,0,0,'답변대기')
 	</insert>
-	
+
 	<select id="getData" resultType="MyQna">
 		select * from qna
 		where num =	#{num}
 	</select>
 
 	<update id="updateData">
-			update qna 
-			set writer=#{writer}, cate1=#{cate1}, cate2=#{cate2}, cate3=#{cate3}, subject=#{subject}, content=#{content}
-			where num=#{num}	 
+		update qna
+		set writer=#{writer}, cateopen=#{cateopen},
+		cate=#{cate},
+		subject=#{subject}, content=#{content}, image=#{image}
+		where num=#{num}
 	</update>
-	
+
+	<delete id="deleteData">
+		delete qna where num = #{num}
+	</delete>
+
 </mapper>
 
 
 <!-- #{reg_date} -->
+
+
+<!-- <insert id="insertData"> insert into qna(num,writer,cateopen,cate,subject,image,content,reg_date,readcount,ref,re_step,re_level,reply) 
+	values(q_seq.nextval,#{writer},#{cateopen},#{cate},#{subject},#{image}, #{content},#{reg_date},#{readcount,jdbcType=VARCHAR},q_seq.currval,0,0,'no') 
+	</insert> -->
+	
