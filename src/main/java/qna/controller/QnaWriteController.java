@@ -32,8 +32,8 @@ public class QnaWriteController {
 	}
 
 	@RequestMapping(value=command, method=RequestMethod.POST)
-	public String write(@ModelAttribute("qna") @Valid QnaBean qna,
-			HttpServletRequest request, BindingResult result) {
+	public String write(@ModelAttribute("qna") @Valid QnaBean qna, BindingResult result
+			HttpServletRequest request) {
 		System.out.println("WriteController_POST");
 
 		if(result.hasErrors()) {
