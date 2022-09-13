@@ -39,7 +39,7 @@
 	insert into qna(num,writer,cate1,cate2,cate3,subject,content,reg_date,ref,re_step,re_level,reply)									
 	values(q_seq.nextval,'kim','구매자','비밀글','상품/이벤트','상품 문의합니다.','언제 재입고 되나요?',sysdate,q_seq.currval,0,0,'no');									
 
-++
+
   insert into qna(num,writer,cate1,cate2,cate3,subject,content,reg_date,ref,re_step,re_level,reply) 
   values(q_seq.nextval,'asd','출고예정일','비밀글','배송','문의합니다.','빠른출고바랍니다.',sysdate,q_seq.currval,0,0,'no');								
 
