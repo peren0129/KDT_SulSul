@@ -1,7 +1,7 @@
 # KDT_SulSul  qna
 
 										
---qna																				
+	--qna																				
 	drop sequence q_seq;									
 	create sequence q_seq									
 	start with 1									
@@ -40,16 +40,16 @@
 	values(q_seq.nextval,'kim','구매자','비밀글','상품/이벤트','상품 문의합니다.','언제 재입고 되나요?',sysdate,q_seq.currval,0,0,'no');									
 
 
-  insert into qna(num,writer,cate1,cate2,cate3,subject,content,reg_date,ref,re_step,re_level,reply) 
-  values(q_seq.nextval,'asd','출고예정일','비밀글','배송','문의합니다.','빠른출고바랍니다.',sysdate,q_seq.currval,0,0,'no');								
+	insert into qna(num,writer,cate1,cate2,cate3,subject,content,reg_date,ref,re_step,re_level,reply) 
+	values(q_seq.nextval,'asd','출고예정일','비밀글','배송','문의합니다.','빠른출고바랍니다.',sysdate,q_seq.currval,0,0,'no');								
 
-  insert into qna(num,writer,cate1,cate2,cate3,subject,content,reg_date,ref,re_step,re_level,reply) 
-  values(q_seq.nextval,'kim1','구매자1','전체공개','상품/이벤트','문의','유통기한 언제까지?',sysdate,q_seq.currval,0,0,'no');
-  
-  commit;
+	insert into qna(num,writer,cate1,cate2,cate3,subject,content,reg_date,ref,re_step,re_level,reply) 
+	values(q_seq.nextval,'kim1','구매자1','전체공개','상품/이벤트','문의','유통기한 언제까지?',sysdate,q_seq.currval,0,0,'no');
+
+	commit;
 
 
-  private String writer; //작성자, members의 num과 연결
+	private String writer; //작성자, members의 num과 연결
 	private String cate1; //구매자/판매자
 	private String cate2; //비밀글/전체공개
 	private String cate3; //회원/정보관리,배송,반품/환불/교환/AS,영수증/증빙서류,상품/이벤트,키타
@@ -65,21 +65,21 @@
 	private String reply;
 
 
-col num for a6
-col writer for a10
-col cate1 for a10
-col cate2 for a10
-col cate3 for a10
-col subject for a10
-col image for a10
-col checkimage for a10
-col content for a10
-col reg_date for a10
+	col num for a6
+	col writer for a10
+	col cate1 for a10
+	col cate2 for a10
+	col cate3 for a10
+	col subject for a10
+	col image for a10
+	col checkimage for a10
+	col content for a10
+	col reg_date for a10
 
-col ref for a10
-col re_step for a20
-col re_level for a20
-col reply for a20
+	col ref for a10
+	col re_step for a20
+	col re_level for a20
+	col reply for a20
 
-select * from qna;
+	select * from qna;
 
