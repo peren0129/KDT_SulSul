@@ -5,8 +5,8 @@ list.jsp
 <br>
 
 <center>
-	<h2>QNA</h2><br>
-<small>글목록(전체 글: ${pageInfo.totalCount})</small>
+	<h2>QNA</h2>
+	<br> <small>글목록(전체 글: ${pageInfo.totalCount})</small>
 	<table border="1">
 		<tr>
 			<th>번호</th>
@@ -19,7 +19,7 @@ list.jsp
 		</tr>
 
 		<c:if test="${ fn:length(lists) eq 0 }">
-			<td colspan="5">작성된 데이터가 없습니다.</td>
+			<td colspan="5">작성된 게시글이 없습니다.</td>
 		</c:if>
 		<c:if test="${ fn:length(lists) > 0 }">
 			<c:forEach var="list" items="${ lists }">
@@ -30,9 +30,14 @@ list.jsp
 							pattern="yyyy-MM-dd" /> <fmt:formatDate var="formatDate"
 							value="${ reg_date }" pattern="yyyy-MM-dd" /> ${formatDate}</td>
 					<td>${ list.cate3 }</td>
-					<td><a
-						href="getOneData.qna?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${ list.subject }</a></td>
-					<td>${ list.writer }</td>
+					<td><c:if test="${ list.re_level > 0 }">
+							<fmt:parseNumber var="re_level" value="${ list.re_level }" />
+							<img src="resources/images/level.gif" width="${ re_level*20 }"
+								height="15">
+							<img src="resources/images/re.gif">
+						</c:if> <a
+						href="getData.qna?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a></td>
+					<td>${list.writer}</td>
 					<td align="right">${ list.readcount }</td>
 					<td align="center">${ list.reply }</td>
 				</tr>

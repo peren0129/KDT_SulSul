@@ -35,11 +35,11 @@ public class QnaWriteController {
 	public String write(@ModelAttribute("qna") @Valid QnaBean qna,
 			HttpServletRequest request, BindingResult result) {
 		System.out.println("WriteController_POST");
-/*
+
 		if(result.hasErrors()) {
 			return getPage;
 		}
-*/
+
 		qna.setReg_date(new Timestamp(System.currentTimeMillis())); 
 		System.out.println("insert 1");
 		qnaDao.insertData(qna);

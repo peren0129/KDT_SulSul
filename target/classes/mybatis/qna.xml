@@ -5,24 +5,35 @@
 
 <mapper namespace="qna.model.Qna">
 
-	<select id="GetAllData" resultType="MyQna">
+	<select id="getAllData" resultType="MyQna">
 		select * from qna
-		order by num desc
+		order by num
+		desc
 	</select>
 
-	<select id="GetTotalCount" resultType="int">
+	<select id="getTotalCount" resultType="int">
 		select count(*) from qna
 	</select>
 
-	<insert id="InsertData">
+	<insert id="insertData">
 		insert into
-		qna(num,writer,cate1,cate2,cate3,subject,content,reg_date,ref,re_step,re_level,reply)
+		qna(num,writer,cate1,cate2,cate3,subject,content,reg_date,readcount,ref,re_step,re_level,reply)
 		values(q_seq.nextval,#{writer},#{cate1},#{cate2},#{cate3},#{subject},
-		#{content,jdbcType=VARCHAR},sysdate,#{q_seq.currval},0,0,'no') 
+		#{content},#{reg_date},#{readcount,jdbcType=VARCHAR},q_seq.currval,0,0,'no')
 	</insert>
 	
+	<select id="getData" resultType="MyQna">
+		select * from qna
+		where num =	#{num}
+	</select>
+
+	<update id="updateData">
+			update qna 
+			set writer=#{writer}, cate1=#{cate1}, cate2=#{cate2}, cate3=#{cate3}, subject=#{subject}, content=#{content}
+			where num=#{num}	 
+	</update>
 	
 </mapper>
-  
 
- <!-- #{reg_date} -->
+
+<!-- #{reg_date} -->

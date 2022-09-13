@@ -22,24 +22,31 @@ public class QnaDao {
 	public List<QnaBean> getAllData(Paging pageInfo, Map<String, String> map) {
 		List<QnaBean> lists = new ArrayList<QnaBean>(); 
 		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
-		lists = sqlSessionTemplate.selectList(namespace+".GetAllData", map, rowBounds);
+		lists = sqlSessionTemplate.selectList(namespace+".getAllData", map, rowBounds);
 		return lists;
 	}
 
 	public int getTotalCount(Map<String, String> map) {
-		int totalCount = sqlSessionTemplate.selectOne(namespace+".GetTotalCount", map);
+		int totalCount = sqlSessionTemplate.selectOne(namespace+".getTotalCount", map);
 		return totalCount;
 	}
 
 	public void insertData(QnaBean qna) {
 		System.out.println("insert 2");
-		sqlSessionTemplate.insert(namespace+".InsertData", qna);
+		sqlSessionTemplate.insert(namespace+".insertData", qna);
 		System.out.println("insert 3");
 	}
 
+	public QnaBean getData(String num) {
+		QnaBean qna = sqlSessionTemplate.selectOne(namespace+".getData", num);
+		return qna;	
+	}
+	
+	public void updateData(QnaBean qna) {
+		sqlSessionTemplate.update(namespace+".updateData", qna);
+	}
 	
 	
 	
 	
-	//getOneData
 } 

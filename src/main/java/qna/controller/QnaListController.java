@@ -39,6 +39,7 @@ public class QnaListController {
 		 map.put("keyword", "%"+keyword+"%");
 		 
 		 int totalCount = qnaDao.getTotalCount(map);
+		 System.out.println("request.getRequestURI() "+request.getRequestURI());
 		 
 		 String url = request.getContextPath() + command; 
 		 Paging pageInfo = new Paging(pageNumber, null, totalCount, url, whatColumn, keyword, null);
@@ -47,6 +48,7 @@ public class QnaListController {
 		 lists = qnaDao.getAllData(pageInfo,map);
 		 
 		 model.addAttribute("lists", lists);
+		 model.addAttribute("pageInfo", pageInfo);
 		 
 		return getPage;
 	}

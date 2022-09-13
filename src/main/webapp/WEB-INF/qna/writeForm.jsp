@@ -60,7 +60,7 @@ function back() {
 			</tr>
 			<tr>
 				<td>제목</td>
-				<td><input type="text" name="subject" placeholder="문의드립니다.">${qna.subject }
+				<td><input type="text" name="subject" value="${qna.subject }">
 					<form:errors cssClass="err" path="subject" /></td>
 			</tr>
 			<tr>
