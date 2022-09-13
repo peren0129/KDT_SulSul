@@ -17,8 +17,8 @@
 
 	<insert id="insertData">
 		insert into
-		qna(num,writer,cate1,cate2,cate3,subject,content,reg_date,readcount,ref,re_step,re_level,reply)
-		values(q_seq.nextval,#{writer},#{cate1},#{cate2},#{cate3},#{subject},
+		qna(num,writer,cate2,cate3,subject,content,reg_date,readcount,ref,re_step,re_level,reply)
+		values(q_seq.nextval,#{writer},#{cate2},#{cate3},#{subject},
 		#{content},#{reg_date},#{readcount,jdbcType=VARCHAR},q_seq.currval,0,0,'no')
 	</insert>
 	
