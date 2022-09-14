@@ -43,17 +43,36 @@ list.jsp
 				
 				
 				
+				
+				
 			<!-- 관리자 아이디로 로그인시 ~~ 로 수정  -->
 					<c:if test="${fn:contains(list.cateopen, '비밀글')}">
 						<img src="resources/images/00_secret.png" align="absmiddle">
 					</c:if>					
 					<a href="detail.qna?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a></td>
+					
+					
+			<!-- 파일 업로드 된 글 -->
 					<c:if test="${list.image != null}">
 						<img src="resources/images/00_attach_file.png" align="absmiddle">
 					</c:if>					
 
 					<td>${list.writer}</td>
+					
+					
+					
+					
+					
+					
 					<td align="right">${ list.readcount }</td>
+					
+					
+					
+					
+					
+					
+					
+					
 					<td align="center">${ list.reply }</td>
 				</tr>
 			</c:forEach>

@@ -27,7 +27,7 @@
 	</select>
 
 	<update id="addReadcount">
-		update board
+		update qna
 		set readcount = readcount+1
 		where num = #{num}
 	</update>
