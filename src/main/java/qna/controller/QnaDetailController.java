@@ -21,15 +21,17 @@ public class QnaDetailController {
 
 	@RequestMapping(value = command)
 	public ModelAndView detail(@RequestParam("num") String num,
-			@RequestParam("pageNumber") String pageNumber) {
+			@RequestParam(value="pageNumber",required = false) String pageNumber) {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		
-		QnaBean qna = qnaDao.getData(num);
 		ModelAndView mav = new ModelAndView();
+		qnaDao.updateReadcount(num);
+		QnaBean qna = qnaDao.getData(num);
 		
 		mav.addObject("qna",qna);
 		mav.addObject("pageNumber",pageNumber);
+		mav.addObject("num",qna.getNum());
 		mav.setViewName(getPage);
 		return mav;
 	}

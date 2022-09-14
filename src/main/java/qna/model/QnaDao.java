@@ -49,6 +49,11 @@ public class QnaDao {
 	public void updateData(QnaBean qna) {
 		sqlSessionTemplate.update(namespace+".updateData", qna);
 	}
+
+	public int deleteData(String num) {
+		int cnt = sqlSessionTemplate.delete(namespace+".DeleteProduct",num);
+		return cnt;
+	}
 	
 	
 	

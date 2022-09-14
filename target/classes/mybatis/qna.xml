@@ -46,9 +46,8 @@
 
 	<update id="updateData">
 		update qna
-		set writer=#{writer}, cateopen=#{cateopen},
-		cate=#{cate},
-		subject=#{subject}, content=#{content}, image=#{image}
+		set writer=#{writer},cateopen=#{cateopen},
+		cate=#{cate},subject=#{subject},content=#{content},image=#{image}
 		where num=#{num}
 	</update>
 

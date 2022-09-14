@@ -38,8 +38,8 @@ detailForm.jsp
 		</tr>
 		<tr>
 			<td align="center" colspan="2">
-		<input type="button" value="글수정" onClick="location.href='update.qna?num=${qna.num }&pageNumber=${pageNumber }'">
-		<input type="button" value="글삭제" onClick="location.href='delete.qna?num=${qna.num }&pageNumber=${pageNumber }'">
+		<input type="button" value="글수정" onClick="location.href='update.qna?num=${qna.num}&pageNumber=${pageNumber}'">
+		<input type="button" value="글삭제" onClick="location.href='delete.qna?num=${qna.num}&pageNumber=${pageNumber }'">
 		<%-- <input type="button" value="답글쓰기" onClick="location.href='reply.bd?ref=${article.ref }&re_step=${article.re_step }&re_level=${article.re_level }'" > --%>
 		
 		
@@ -47,13 +47,11 @@ detailForm.jsp
 		
 	<!-- 관리자 아이디로 로그인시 ~~ 로 수정  -->
 		<c:if test="${fn:contains(qna.writer, '길동')}">
-		<input type="button" value="답변하기" onClick="location.href='reply.qna?num=${article.num }&pageNumber=${pageNumber }'" >
+		<input type="button" value="답변하기" onClick="location.href='reply.qna?num=${qna.num}&pageNumber=${pageNumber}'" >
 		</c:if>
 
 		
-		
-		
-		<input type="button" value="글목록" onClick="document.location.href='list.qna?pageNumber=${pageNumber }'" >
+		<input type="button" value="글목록" onClick="document.location.href='list.qna?pageNumber=${pageNumber}'" >
 			</td>
 		</tr>
 
