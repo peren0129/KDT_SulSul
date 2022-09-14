@@ -7,13 +7,13 @@ list.jsp
 <center>
 	<h2>QNA</h2>
 	<small>글목록(전체 글: ${pageInfo.totalCount})</small>
-	<hr style="width: 1200">
+	<hr style="width: 1000">
 	<table border="0">
 		<tr>
 			<!-- <th>번호</th> -->
 			<th width="100">문의날짜</th>
 			<th width="200">카테고리</th>
-			<th width="500">제목</th>
+			<th width="400">제목</th>
 			<th width="70">작성자</th>
 			<th width="70">조회수</th>
 			<th width="100">문의상태</th>

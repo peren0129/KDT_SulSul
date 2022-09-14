@@ -32,7 +32,8 @@ writeForm.jsp
 	<h2>QNA</h2>
 	<form:form commandName="qna" action="write.qna" method="post"
 		enctype="multipart/form-data">
-		<table border="1">
+	<hr style="width: 1000;">
+	<table border="0">
 			<tr>
 				<td>카테고리</td>
 				<td><select name="cate">
