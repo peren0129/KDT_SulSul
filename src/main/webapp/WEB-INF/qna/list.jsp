@@ -80,7 +80,7 @@ list.jsp
 
 	</table>
 	<br>
-	<form action="list.qna" method="post">
+	<form action="list.qna" method="get">
 		<select name="whatColumn">
 			<option value="">전체검색</option>
 			<option value="subject">글제목</option>

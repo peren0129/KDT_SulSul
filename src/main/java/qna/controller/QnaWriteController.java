@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -79,4 +81,19 @@ public class QnaWriteController {
 		mav.setViewName(gotoPage);
 		return mav;
 	}
+	
+	/*
+	   // 글 작성 captcha 테스트
+    @RequestMapping(value = "/board/write", method = RequestMethod.POST)
+    public String boardWrite(HttpSession session, @RequestParam String captcha) {
+        String captchaValue = (String) session.getAttribute("captcha");
+        if (captcha == null || !captchaValue.equals(captcha)) {
+            return "redirect:/board/write"; // 글 작성 페이지로 이동
+        }
+        
+        // TODO 글 작성 처리
+        return "redirect:/board/5"; // 작성한 게시글 페이지로 이동
+    }
+	 */
+	
 }

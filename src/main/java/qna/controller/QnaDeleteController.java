@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,7 +28,7 @@ public class QnaDeleteController {
 	ServletContext servletContext;
 	
 	@RequestMapping(command)
-	public ModelAndView deleteProc(@RequestParam("num") String num,
+	public ModelAndView deleteProc(Model model, @RequestParam("num") String num,
 			@RequestParam(value="pageNumber", required=false) String pageNumber,
 			HttpServletResponse response) throws IOException {
 		ModelAndView mav = new ModelAndView();
@@ -43,8 +44,12 @@ public class QnaDeleteController {
 		int cnt = qnaDao.deleteData(num);
 		response.setContentType("text/html; charset=UTF-8"); //한글처리
 		PrintWriter writer = response.getWriter(); //연결다리
+		
+		/* alert을 이렇게 띄우면 넘어가는 주소 인식이 안됨..
 		writer.println("<script type='text/javascript'> alert('삭제되었습니다.'); </script>");
 		writer.flush();
+		*/
+		
 		mav.addObject("pageNumber",pageNumber);
 		mav.addObject("num",qna.getNum());
 		mav.setViewName(getPage);

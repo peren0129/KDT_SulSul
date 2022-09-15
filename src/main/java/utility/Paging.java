@@ -140,7 +140,7 @@ public class Paging {
 
 
 	public String getPagingHtml() {
-		System.out.println("pagingHtml:"+pagingHtml);
+//System.out.println("pagingHtml:"+pagingHtml);
 		
 		return pagingHtml;
 //		pagingHtml:
@@ -184,7 +184,7 @@ public class Paging {
 			String whologin) {		
 
 		if(  _pageNumber == null || _pageNumber.equals("null") || _pageNumber.equals("")  ){
-			System.out.println("_pageNumber:"+_pageNumber); // null
+//System.out.println("_pageNumber:"+_pageNumber); // null
 			_pageNumber = "1" ;
 		}
 		this.pageNumber = Integer.parseInt( _pageNumber ) ; 
@@ -213,23 +213,23 @@ public class Paging {
 
 		this.beginPage = ( this.pageNumber - 1 ) / this.pageCount * this.pageCount + 1  ;
 		this.endPage = this.beginPage + this.pageCount - 1 ;
-		System.out.println("pageNumber:"+pageNumber+"/totalPage:"+totalPage);	
+//System.out.println("pageNumber:"+pageNumber+"/totalPage:"+totalPage);	
 		
 		if( this.endPage > this.totalPage ){
 			this.endPage = this.totalPage ;
 		}
 		
-		System.out.println("pageNumber2:"+pageNumber+"/totalPage2:"+totalPage);	
+//System.out.println("pageNumber2:"+pageNumber+"/totalPage2:"+totalPage);	
 		this.url = url ; //  /ex/list.ab
 		this.whatColumn = whatColumn ;
 		this.keyword = keyword ;
-		System.out.println("whatColumn:"+whatColumn+"/keyword:"+keyword);
+//System.out.println("whatColumn:"+whatColumn+"/keyword:"+keyword);
 		
 		this.pagingHtml = getPagingHtml(url) ;
 	}// 생성자
 	
 	private String getPagingHtml( String url ){ //페이징 문자열을 만든다.
-		System.out.println("getPagingHtml url:"+url); // /ex/list.ab
+//System.out.println("getPagingHtml url:"+url); // /ex/list.ab
 		
 		String result = "" ;
 		String added_param = "&whatColumn=" + whatColumn + "&keyword=" + keyword ; 
@@ -254,7 +254,7 @@ public class Paging {
 				
 			}
 		}
-		System.out.println("result:"+result);  
+//System.out.println("result:"+result);  
 		System.out.println();
 		
 		if ( this.endPage != this.totalPage) { // 뒤쪽
@@ -267,7 +267,7 @@ public class Paging {
 					+ "?pageNumber=" + (this.totalPage ) + "&pageSize=" + this.pageSize 
 					+ added_param + "'>끝</a>&nbsp;" ;
 		}		
-		System.out.println("result2:"+result);
+//System.out.println("result2:"+result);
 		
 		return result ;
 	}	

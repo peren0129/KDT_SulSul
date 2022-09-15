@@ -55,6 +55,8 @@
 		delete qna where num = #{num}
 	</delete>
 
+
+
 </mapper>
 
 

@@ -6,7 +6,14 @@ detailForm.jsp
 <%-- <%=application.getRealPath("/resources")%> <br>
 <%=application.getContextPath()%><br> 
 <%=request.getContextPath()%><br> --%>
-
+<script>
+	function del(num,pageNumber) {
+		var chk = confirm("삭제하시겠습니까?");
+		if (chk) {
+			location.href="delete.qna?num="+num+"&pageNumber="+pageNumber;
+		}
+	}	
+</script>
 <center>
 	<h2>${qna.subject}</h2>
 	<hr style="width: 1000">
@@ -113,7 +120,8 @@ detailForm.jsp
 			<td align="center" colspan="2"><input type="button" value="글수정"
 				onClick="location.href='update.qna?num=${qna.num}&pageNumber=${pageNumber}'">
 				<input type="button" value="글삭제"
-				onClick="location.href='delete.qna?num=${qna.num}&pageNumber=${pageNumber}'">
+				onClick="del('${qna.num}','${pageInfo.pageNumber }')">
+				<%-- onClick="location.href='delete.qna?num=${qna.num}&pageNumber=${pageNumber}'"> --%>
 				<%-- <input type="button" value="답글쓰기" onClick="location.href='reply.bd?ref=${article.ref }&re_step=${article.re_step }&re_level=${article.re_level }'" > --%>
 				<input type="button" value="글목록"
 				onClick="document.location.href='list.qna?pageNumber=${pageNumber}'">

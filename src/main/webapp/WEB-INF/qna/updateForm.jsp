@@ -6,16 +6,17 @@
 	<script type="text/javascript">
 		/* function write() {
 		 if (confirm("등록하시겠습니까 ?") == true) {
-		 alert("문의글이 등록되었습니다.");
-		 location.href = "write.qna";
-		 } else {
-		 return;
-		 }
-		 }  */
+			 alert("문의글이 등록되었습니다.");
+			 location.href = "write.qna";
+			 } else {
+			 return;
+			 }
+		 }  
+		*/
 	
-		function back() {
+		function back(num,pageNumber) {
 			if (confirm("수정을 취소하시겠습니까?") == true) {
-				location.href = "detail.qna";
+				location.href = "detail.qna?num="+num+"&pageNumber="+pageNumber;
 			} else {
 				return;
 			}
@@ -83,7 +84,7 @@
 				</tr>
 			</table>
 	
-			<input type="button" value="이전" onclick="back()">
+			<input type="button" value="이전" onclick="back('${qna.num}','${pageInfo.pageNumber }')">
 			<input type="submit" value="수정완료">
 		</form:form>
 		<!-- 	<input type="submit" value="등록" onclick="insert()"> -->
