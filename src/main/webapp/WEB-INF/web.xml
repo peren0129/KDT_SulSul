@@ -190,18 +190,15 @@
 		<url-pattern>*.qna</url-pattern>
 	</servlet-mapping>
 
-
-<!-- 
+<!-- <display-name> 인식안됨 -->
 	<servlet>
-		<servlet-name>captcha</servlet-name>
-		<servlet-class>servlet.CaptchaServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
+		<display-name>CaptchaGenServlet</display-name>
+		<servlet-name>CaptchaGenServlet</servlet-name>
+		<servlet-class>servlet.CaptchaGenServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>captcha</servlet-name>
+		<servlet-name>CaptchaGenServlet</servlet-name>
 		<url-pattern>/captcha</url-pattern>
 	</servlet-mapping>
- -->
-	
-	
+
 </web-app>

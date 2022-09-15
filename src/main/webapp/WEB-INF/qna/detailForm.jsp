@@ -13,6 +13,22 @@ detailForm.jsp
 			location.href="delete.qna?num="+num+"&pageNumber="+pageNumber;
 		}
 	}	
+	
+	/*  
+	function popupImage(url){
+	    var img = new Image();
+	    var scWidth = screen.availWidth; //현재 사용중인 스크린 크기를 구함
+	    var scHeight = screen.availHeight;
+	    var left = (parseInt(scWidth)-650)/2; //팝업창 위치 조절
+	    var top = (parseInt(scHeight)-900)/2;
+	    img.src = url;
+	    var img_width = img.width-500; //팝업창 크기 조절
+	    var win_width = img.width-500;
+	    var height = img.height-290;
+	    var openImage = window.open('','_blank','width='+img_width+',height='+heigh',top='+top+',left='+left+',menubars=no,scrollbars=auto');
+	    openImage.document.write("<style>body{margin:0px;}</style><a href = # onclick = window.close() onfocus=this.blur()><img src = '"+url+"'width='"+win_width+"'></a>");
+	  }
+	*/
 </script>
 <center>
 	<h2>${qna.subject}</h2>
@@ -33,16 +49,19 @@ detailForm.jsp
 			<td>제목</td>
 			<td>&nbsp;${qna.subject}</td>
 		</tr> --%>
-		<tr height="300" valign="top">
-			<td>본문</td>
-			<td>${qna.content}</td>
+		<tr height="200" valign="top">
+			<td><br>본문</td>
+			<td><br>${qna.content}</td>
 		</tr>
 		<tr>
 			<td valign="top">첨부파일</td>
-			<td><img height=70 width=70
-				src="<%=request.getContextPath()%>/resources/${qna.image}"></td>
+			<td> <c:if test="${qna.image != null}"><img height=300 width=300 onclick="javascript:popupImage(this.src);" 
+						src="<%=request.getContextPath()%>/resources/${qna.image}"></c:if> 
+			<c:if test="${qna.image == null}"><small> 첨부된 파일이 없습니다.</small></c:if><br><br>
+			</td>
 		</tr>
 		<tr>
+		
 		</tr>
 		<tr>
 			<!-- 관리자 아이디로 로그인시 ~~ 로 수정  -->
@@ -54,9 +73,7 @@ detailForm.jsp
 						<td colspan="4"></td>
 					</tr>
 
-
-
-					<!-- 임시폼 -->
+					<!-- 임시 -->
 					<tr
 						reply_type="<c:if test="${replyList.depth == '0'}">main</c:if><c:if test="${replyList.depth == '1'}">sub</c:if>">
 						<!-- 댓글의 depth 표시 -->
@@ -64,7 +81,7 @@ detailForm.jsp
 
 						<td align="center" width="200px">
 							<button name="reply_reply" parent_id="${replyList.reply_id}"
-								reply_id="${replyList.reply_id}">저장</button> <!-- 첫 댓글에만 댓글이 추가 대댓글 불가 -->
+								reply_id="${replyList.reply_id}">답글</button> <!-- 첫 댓글에만 댓글이 추가 대댓글 불가 -->
 
 							<button name="reply_modify" parent_id="${replyList.parent_id}"
 								r_type="<c:if test="${replyList.depth == '0'}">main</c:if><c:if test="${replyList.depth == '1'}">sub</c:if>"
@@ -115,13 +132,13 @@ detailForm.jsp
 				-->
 			</c:if>
 		</tr>
-		<br>
+		
 		<tr>
-			<td align="center" colspan="2"><input type="button" value="글수정"
+		
+			<td align="center" colspan="2"><br><br><input type="button" value="글수정"
 				onClick="location.href='update.qna?num=${qna.num}&pageNumber=${pageNumber}'">
 				<input type="button" value="글삭제"
-				onClick="del('${qna.num}','${pageInfo.pageNumber }')">
-				<%-- onClick="location.href='delete.qna?num=${qna.num}&pageNumber=${pageNumber}'"> --%>
+				onClick="del('${qna.num}','${pageInfo.pageNumber }')"> <%-- onClick="location.href='delete.qna?num=${qna.num}&pageNumber=${pageNumber}'"> --%>
 				<%-- <input type="button" value="답글쓰기" onClick="location.href='reply.bd?ref=${article.ref }&re_step=${article.re_step }&re_level=${article.re_level }'" > --%>
 				<input type="button" value="글목록"
 				onClick="document.location.href='list.qna?pageNumber=${pageNumber}'">

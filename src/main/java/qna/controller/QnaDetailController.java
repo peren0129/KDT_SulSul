@@ -36,3 +36,40 @@ public class QnaDetailController {
 		return mav;
 	}
 }
+
+
+
+
+
+
+
+
+/*
+@Controller
+public class QnaDetailController {
+	private final String command = "detail.qna";
+	private String getPage = "/detailForm";
+	
+	@Autowired
+	QnaDao qnaDao;
+	
+	@RequestMapping(command)
+	public String content(Model model, @RequestParam("num") String num,
+			@RequestParam("pageNumber") String pageNumber) {
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		
+		qnaDao.updateReadcount(num);
+		QnaBean qna = qnaDao.getData(num);
+		
+		model.addAttribute("pageNumber", pageNumber);
+		model.addAttribute("qna", qna);
+		
+		return getPage;
+	}
+}
+ */
+
+
+
+

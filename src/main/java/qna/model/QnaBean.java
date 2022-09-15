@@ -20,7 +20,7 @@ public class QnaBean {
 	@NotEmpty(message = "내용을 입력하세요.")
 	private String content;
 	private Timestamp reg_date;
-	private String readcount;
+	private int readcount;
 	private String ref; // =num
 	private String re_step; //최신순, 낮은 번호가 최신
 	private String re_level; //원글0, 답글1, 답답글2
@@ -37,7 +37,7 @@ public class QnaBean {
 		System.out.println("setUpload upload:" + upload);
 		System.out.println("upload.getName():"+upload.getName());
 		System.out.println("upload.getOriginalFilename():"+upload.getOriginalFilename());
-		this.image = upload.getOriginalFilename();
+		setImage(upload.getOriginalFilename()); 
 	}
 	
 	public String getNum() {
@@ -100,10 +100,10 @@ public class QnaBean {
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
 	}
-	public String getReadcount() {
+	public int getReadcount() {
 		return readcount;
 	}
-	public void setReadcount(String readcount) {
+	public void setReadcount(int readcount) {
 		this.readcount = readcount;
 	}
 	public String getRef() {

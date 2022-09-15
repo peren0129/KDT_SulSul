@@ -36,8 +36,21 @@ public class QnaWriteController {
 	ServletContext servletContext;
 
 	@RequestMapping(value=command, method=RequestMethod.GET)
-	public String write() {
+	public String write(HttpSession session) {
 		System.out.println("WriteController_GET");
+		
+		/*
+		// 로그인하면 loginInfo session설정
+		if(session.getAttribute("loginInfo") == null) { // 로그인 안했으면
+			
+			session.setAttribute("destination", "redirect:/insert.prd");
+			return "redirect:/loginForm.mem"; // MemberLoginController
+		}
+		else { // 로그인했으면
+		}
+		}
+		*/
+		
 		return getPage;
 	}
 

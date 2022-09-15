@@ -3,6 +3,9 @@
 <%@ include file="../common/common.jsp"%>
 writeForm.jsp
 <br>
+<script src="https://code.jquery.com/jquery-1.6.1.min.js"
+	integrity="sha256-x4Q3aWDzFj3HYLwBnnLl/teCA3RaVRDGmZKjnR2P53Y="
+	crossorigin="anonymous"></script>
 <script type="text/javascript">
 	/* function write() {
 	 if (confirm("등록하시겠습니까 ?") == true) {
@@ -20,12 +23,38 @@ writeForm.jsp
 			return;
 		}
 	}
+
+	$(document).ready(function() {
+		create();
+
+		$("#refreshBtn").click(function(e) {
+			e.preventDefault();
+			create();
+		});
+
+		$("#confirmBtn").click(function(e) {
+			e.preventDefault();
+			$("#frm").submit();
+		});
+
+		function create() {
+			$("#captcha img").attr("src", "/captcha?" + Math.random());
+		}
+	});
 </script>
 <style type="text/css">
-.err {
-	color: red;
-	font-weight: bold;
-}
+	.err {
+		color: red;
+		font-weight: bold;
+	}
+	
+	#captcha {
+		width: 230px;
+		height: 70px;
+		border: 1px #DCDCDC;
+		text-align: center;
+		padding: 5px;
+	}
 </style>
 
 <center>
@@ -33,6 +62,7 @@ writeForm.jsp
 	<form:form commandName="qna" action="write.qna" method="post"
 		enctype="multipart/form-data">
 	<hr style="width: 1000;">
+					<br>
 	<table border="0">
 			<tr>
 				<td>카테고리</td>
@@ -71,52 +101,23 @@ writeForm.jsp
 			</tr>
 			<tr>
 				<td>첨부파일</td>
-				<td><input type="file" name="upload" value="">${qna.image }</td>
+				<td><input type="file" name="upload" value="">${qna.upload }</td>
 			</tr>
 			<tr>
 				<td>자동등록방지</td>
-				<td>
+				<td>    
+				<form id="frm" action="result.jsp" method="post">
+			        <div id="captcha"><img/></div>
+			        <input type="text" name="captchaInput"/>
+			        <button id="confirmBtn">확인</button>
+			        <button id="refreshBtn">새로고침</button>
+			    </form>
 				
-				
-				<!-- 
-				<form action="/board/write" id="writeForm" method="post">
-					<fieldset>
-						<legend class="screen_out">게시글 작성 폼</legend>
-				
-						<div class="box captcha">
-							<div class="loading"></div>
-							// .loading
-				
-							<label for="captcha">자동 방지 코드</label>
-							<input type="text" id="captcha" name="captcha" autocomplete="off" required />
-							<img src="/captcha" alt="캡차 이미지" title="클릭시 새로고침" />
-						</div>
-						// .box.captcha
-				
-						<div class="box btn">
-							<a href="/board" class="btn cancel">취소</a>
-							<button type="submit" class="btn write">작성 완료</button>
-						</div>
-					</fieldset>
-				</form>
-				<script>
-					var $captchaLoader = $("#writeForm .box.captcha .loading");
-					var $captchaImg = $("#writeForm .box.captcha img");
-				
-					// captcha 새로고침
-					$captchaImg.click(function() {
-						$captchaLoader.show();
-						$(this).attr("src", "/captcha?ran=" + Math.random());
-						$captchaLoader.fadeOut(500);
-					});
-				</script>
-			 -->
-			
 			
 				</td>
 			</tr>
 		</table>
-
+<br><br>
 		<input type="button" value="이전" onclick="back()">
 		<input type="submit" value="등록">
 	</form:form>
