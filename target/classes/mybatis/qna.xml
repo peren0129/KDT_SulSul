@@ -41,7 +41,7 @@
 
 	<select id="getData" resultType="MyQna">
 		select * from qna
-		where num =	#{num}
+		where num = #{num}
 	</select>
 
 	<update id="updateData">

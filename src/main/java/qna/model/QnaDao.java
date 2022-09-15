@@ -36,9 +36,7 @@ public class QnaDao {
 	}
 	
 	public void insertData(QnaBean qna) {
-		System.out.println("insert 2");
 		sqlSessionTemplate.insert(namespace+".insertData", qna);
-		System.out.println("insert 3");
 	}
 
 	public QnaBean getData(String num) {
@@ -51,7 +49,9 @@ public class QnaDao {
 	}
 
 	public int deleteData(String num) {
-		int cnt = sqlSessionTemplate.delete(namespace+".DeleteProduct",num);
+		System.out.println("deleteData 2");
+		int cnt = sqlSessionTemplate.delete(namespace+".deleteData",num);
+		System.out.println("deleteData 3");
 		return cnt;
 	}
 	

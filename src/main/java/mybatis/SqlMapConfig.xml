@@ -7,6 +7,7 @@
 
 	<typeAliases>
 		<typeAlias type="qna.model.QnaBean" alias="MyQna"/>
+		<!-- <typeAlias type="qna.model.NoticeBean" alias="MyNotice"/> -->
 		
 		<!-- 없는 bean 쓰면 에러남
 		<typeAlias type="member.model.MemberBean" alias="MyMember"/> 
@@ -21,6 +22,7 @@
 		<mapper resource="mybatis/member.xml"/>
 		<mapper resource="mybatis/seller.xml"/>
 		<mapper resource="mybatis/qna.xml"/>
+		<!-- <mapper resource="mybatis/notice.xml"/> -->
 		<!-- <mapper resource="mybatis/sorder.xml"/> -->
 		<!-- <mapper resource="mybatis/sorderdetail.xml"/> -->
 	</mappers>

@@ -1,6 +1,5 @@
 package qna.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -29,16 +28,16 @@ public class QnaDeleteController {
 	
 	@RequestMapping(command)
 	public ModelAndView deleteProc(@RequestParam("num") String num,
-			@RequestParam("pageNumber") String pageNumber,
-			@RequestParam("passwd") String passwd,
+			@RequestParam(value="pageNumber", required=false) String pageNumber,
 			HttpServletResponse response) throws IOException {
 		ModelAndView mav = new ModelAndView();
 
 		QnaBean qna = qnaDao.getData(num);
-		String deletePath = servletContext.getRealPath("/resources");
-		
-		File delFile = new File(deletePath+"/"+qna.getImage());
-		delFile.delete();
+		/*
+			String deletePath = servletContext.getRealPath("/resources");
+			File delFile = new File(deletePath+"/"+qna.getImage()); 
+			delFile.delete();
+		 */
 		
 		//아래 나중에 잘 합쳐보자 ..
 		int cnt = qnaDao.deleteData(num);
