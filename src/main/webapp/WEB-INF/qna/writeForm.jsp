@@ -135,7 +135,7 @@ th, td {
 		<br>
 		<input type="button" value="이전" onclick="back()">
 		<input type="submit" value="등록">
+	<!-- 	<input type="button" value="등록" onclick="write()"> -->
 	</form:form>
-	<!-- 	<input type="submit" value="등록" onclick="insert()"> -->
 
 </center>

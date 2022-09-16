@@ -3,12 +3,17 @@
 <%@ include file="../common/common.jsp"%>
 <!-- list.jsp -->
 <br>
-
+<style>
+th, td {
+	border-bottom: 1px solid #DCDCDC;
+	padding: 10px 0px;
+}
+</style>
 <center>
 	<h2>QNA</h2>
 	<small>글목록(전체 글: ${pageInfo.totalCount})</small>
-	<hr style="width: 1000">
-	<table border="0">
+	<hr style="width: 1000px;">
+	<table>
 		<tr>
 			<!-- <th>번호</th> -->
 			<th width="100">문의날짜</th>

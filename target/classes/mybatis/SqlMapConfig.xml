@@ -7,24 +7,12 @@
 
 	<typeAliases>
 		<typeAlias type="qna.model.QnaBean" alias="MyQna"/>
-		<!-- <typeAlias type="qna.model.NoticeBean" alias="MyNotice"/> -->
-		
-		<!-- 없는 bean 쓰면 에러남
-		<typeAlias type="member.model.MemberBean" alias="MyMember"/> 
-		<typeAlias type="seller.model.SellerBean" alias="MySeller"/> 
-		<typeAlias type="product.model.AlcoholBean" alias="MyAlcohol"/>
-		<typeAlias type="product.model.SnackBean" alias="MySnack"/>
-		 -->
+		<typeAlias type="notice.model.NoticeBean" alias="MyNotice"/>
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="mybatis/product.xml"/>
-		<mapper resource="mybatis/member.xml"/>
-		<mapper resource="mybatis/seller.xml"/>
 		<mapper resource="mybatis/qna.xml"/>
-		<!-- <mapper resource="mybatis/notice.xml"/> -->
-		<!-- <mapper resource="mybatis/sorder.xml"/> -->
-		<!-- <mapper resource="mybatis/sorderdetail.xml"/> -->
+		<mapper resource="mybatis/notice.xml"/>
 	</mappers>
   </configuration>
 

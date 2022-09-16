@@ -7,7 +7,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class QnaBean {
 	private String num;
-	
 	private String writer; //작성자, members의 num과 연결
 	private String cateuser; //구매자/판매자
 	private String cateopen; //비밀글/전체공개

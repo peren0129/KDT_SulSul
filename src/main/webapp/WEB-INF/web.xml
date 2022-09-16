@@ -189,8 +189,9 @@
 		<servlet-name>qna</servlet-name>
 		<url-pattern>*.qna</url-pattern>
 	</servlet-mapping>
-
-<!-- <display-name> 인식안됨 -->
+	
+	
+<!-- <display-name> 인식안됨 
 	<servlet>
 		<display-name>CaptchaGenServlet</display-name>
 		<servlet-name>CaptchaGenServlet</servlet-name>
@@ -200,5 +201,5 @@
 		<servlet-name>CaptchaGenServlet</servlet-name>
 		<url-pattern>/captcha</url-pattern>
 	</servlet-mapping>
-
+ -->
 </web-app>

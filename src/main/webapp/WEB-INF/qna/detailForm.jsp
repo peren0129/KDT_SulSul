@@ -32,36 +32,31 @@
 	 */
 </script>
 <style>
-  table {
-    width: 1000;
-    border-top: 1px solid #DCDCDC;
-    border-collapse: collapse;
-  }
-  th, td {
-    border-bottom: 1px solid #DCDCDC;
-    padding: 10px;
-  }
+table {
+	width: 1000;
+	border-top: 1px solid #DCDCDC;
+	border-collapse: collapse;
+}
+
+th, td {
+	border-bottom: 1px solid #DCDCDC;
+	padding: 10px;
+}
 </style>
 <center>
 	<h2>${qna.subject}</h2>
-	<hr style="width: 1000"><br>
+	<hr style="width: 1000">
+	<br>
 	<table>
 		<tr>
 			<td width="100">카테고리</td>
-			<td>${qna.cate}
-			</td>
+			<td>${qna.cate}</td>
 		</tr>
 		<tr>
 			<td>작성자</td>
 			<td>${qna.writer}</td>
 
-			<%-- 	<td>공개여부</td>
-			<td>&nbsp;${qna.cateopen}</td> --%>
 		</tr>
-		<%-- 		<tr>
-			<td>제목</td>
-			<td>&nbsp;${qna.subject}</td>
-		</tr> --%>
 		<tr height="200" valign="top">
 			<td><br>본문</td>
 			<td><br>${qna.content}</td>
@@ -74,8 +69,7 @@
 						src="<%=request.getContextPath()%>/resources/${qna.image}">
 				</c:if> <c:if test="${qna.image == null}">
 					<small> 첨부된 파일이 없습니다.</small>
-				</c:if><br>
-			<br></td>
+				</c:if><br> <br></td>
 		</tr>
 		<tr>
 
@@ -147,13 +141,11 @@
 			</c:if>
 		</tr>
 		<tr>
-			<td align="center" colspan="2"><br>
-			<br>
-			<input type="button" value="글수정"
+			<td align="center" colspan="2"><br> <br> <input
+				type="button" value="글수정"
 				onClick="location.href='update.qna?num=${qna.num}&pageNumber=${pageNumber}'">
 				<input type="button" value="글삭제"
-				onClick="del('${qna.num}','${pageInfo.pageNumber }')"> 
-				<%-- onClick="location.href='delete.qna?num=${qna.num}&pageNumber=${pageNumber}'"> --%>
+				onClick="del('${qna.num}','${pageInfo.pageNumber }')"> <%-- onClick="location.href='delete.qna?num=${qna.num}&pageNumber=${pageNumber}'"> --%>
 				<%-- <input type="button" value="답글쓰기" onClick="location.href='reply.qna?ref=${qna.ref }&re_step=${qna.re_step }&re_level=${qna.re_level }'" > --%>
 				<input type="button" value="글목록"
 				onClick="document.location.href='list.qna?pageNumber=${pageNumber}'">

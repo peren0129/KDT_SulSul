@@ -69,7 +69,6 @@ th, td {
 						
 						<option value="비밀글"
 							<c:if test="${fn:contains(qna.cateopen,'비밀글')}">selected</c:if>>비밀글
-						
 				</select></td>
 			</tr>
 			<tr>
@@ -109,6 +108,4 @@ th, td {
 			onclick="back('${qna.num}','${pageInfo.pageNumber }')">
 		<input type="submit" value="수정완료">
 	</form:form>
-	<!-- 	<input type="submit" value="등록" onclick="insert()"> -->
-
 </center>

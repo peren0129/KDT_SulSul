@@ -80,3 +80,60 @@
 	private String re_step; //최신순, 낮은 번호가 최신
 	private String re_level; //원글0, 답글1, 답답글2
 	private String reply;
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	-- notice					
+	drop sequence nseq;									
+	create sequence nseq									
+	start with 1									
+	increment by 1									
+	nocache;
+			
+	drop table notice cascade constraints;				
+	create table notice(				
+		num number not null primary key,			
+		writer varchar2(50) not null,		
+		subject varchar2(100) not null,	
+		cate varchar2(50) not null, -- radio			
+		reg_date date default sysdate,			
+		readcount number default 0, -- 조회수			
+		content varchar2(500),
+		image varchar2(500) 
+	);				
+	
+	
+		
+	insert into notice(num,writer,subject,cate)									
+	values(nseq.nextval,'관리자','제목','공지');									
+	insert into notice(num,writer,subject,cate)									
+	values(nseq.nextval,'관리자1','제목1','공지');									
+	insert into notice(num,writer,subject,cate,content)									
+	values(nseq.nextval,'관리자2','제목2','이벤트','내용은 이미지입니다.');									
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
