@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
-writeForm.jsp
+<!-- writeForm.jsp -->
 <br>
 <script src="https://code.jquery.com/jquery-1.6.1.min.js"
 	integrity="sha256-x4Q3aWDzFj3HYLwBnnLl/teCA3RaVRDGmZKjnR2P53Y="
@@ -43,27 +43,39 @@ writeForm.jsp
 	});
 </script>
 <style type="text/css">
-	.err {
-		color: red;
-		font-weight: bold;
-	}
-	
-	#captcha {
-		width: 230px;
-		height: 70px;
-		border: 1px #DCDCDC;
-		text-align: center;
-		padding: 5px;
-	}
+.err {
+	color: red;
+	font-weight: bold;
+}
+
+#captcha {
+	width: 230px;
+	height: 70px;
+	border: 1px #DCDCDC;
+	text-align: center;
+	padding: 5px;
+}
+
+table {
+	width: 1000;
+	border-top: 1px solid #DCDCDC;
+	border-collapse: collapse;
+}
+
+th, td {
+	border-bottom: 1px solid #DCDCDC;
+	padding: 10px;
+}
+
 </style>
 
 <center>
 	<h2>QNA</h2>
 	<form:form commandName="qna" action="write.qna" method="post"
 		enctype="multipart/form-data">
-	<hr style="width: 1000;">
-					<br>
-	<table border="0">
+		<hr style="width: 1000;">
+		<br>
+		<table>
 			<tr>
 				<td>카테고리</td>
 				<td><select name="cate">
@@ -84,13 +96,13 @@ writeForm.jsp
 			</tr>
 			<tr>
 				<td>작성자</td>
-				<td><input type="text" size="30" maxlength="10" name="writer"
+				<td><input type="text" size="48" maxlength="10" name="writer"
 					value="${qna.writer }"></td>
 				<!-- 로그인 정보로 변경, 수정불가 -->
 			</tr>
 			<tr>
 				<td>* 제목</td>
-				<td><input type="text" name="subject" value="${qna.subject }">
+				<td><input type="text" size="48" name="subject" value="${qna.subject }">
 					<form:errors cssClass="err" path="subject" /></td>
 			</tr>
 			<tr>
@@ -105,19 +117,22 @@ writeForm.jsp
 			</tr>
 			<tr>
 				<td>자동등록방지</td>
-				<td>    
-				<form id="frm" action="result.jsp" method="post">
-			        <div id="captcha"><img/></div>
-			        <input type="text" name="captchaInput"/>
-			        <button id="confirmBtn">확인</button>
-			        <button id="refreshBtn">새로고침</button>
-			    </form>
-				
-			
+				<td>
+					<form id="frm" action="result.jsp" method="post">
+						<div id="captcha">
+							<img /><small>보이는 문자를 <br>순서대로 입력해주세요.</small>
+						</div>
+						<input size="31" type="text" name="captchaInput" />
+						<button id="confirmBtn">확인</button>
+						<button id="refreshBtn">이미지 새로고침</button>
+					</form>
+
+
 				</td>
 			</tr>
 		</table>
-<br><br>
+		<br>
+		<br>
 		<input type="button" value="이전" onclick="back()">
 		<input type="submit" value="등록">
 	</form:form>

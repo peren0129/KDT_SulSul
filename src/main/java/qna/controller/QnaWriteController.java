@@ -95,9 +95,8 @@ public class QnaWriteController {
 		return mav;
 	}
 	
-	/*
+	/*  @RequestParm이 안됨 
 	   // 글 작성 captcha 테스트
-    @RequestMapping(value = "/board/write", method = RequestMethod.POST)
     public String boardWrite(HttpSession session, @RequestParam String captcha) {
         String captchaValue = (String) session.getAttribute("captcha");
         if (captcha == null || !captchaValue.equals(captcha)) {

@@ -10,14 +10,14 @@ import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
- 
+
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
- 
-import org.apache.commons.lang.RandomStringUtils;
+
+import org.apache.commons.lang3.RandomStringUtils;
  
 public class CaptchaServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -65,8 +65,8 @@ public class CaptchaServlet extends HttpServlet {
             int h = (int) bounds.getHeight();
              
             // 이미지 생성
-            BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
-            Graphics2D g = image.createGraphics();
+            BufferedImage bimage = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+            Graphics2D g = bimage.createGraphics();
             g.setColor(Color.WHITE);
             g.fillRect(0, 0, w, h);
             g.setColor(new Color(113, 193, 217));
@@ -78,7 +78,7 @@ public class CaptchaServlet extends HttpServlet {
             g.drawString(randomString, (float) bounds.getX(), (float) -bounds.getY());
             g.dispose();
  
-            ImageIO.write(image, "png",  response.getOutputStream());
+            ImageIO.write(bimage, "png",  response.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
