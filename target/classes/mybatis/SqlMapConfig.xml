@@ -2,18 +2,23 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
-  
-  <configuration>
+
+<configuration>
 
 	<typeAliases>
-		<typeAlias type="qna.model.QnaBean" alias="MyQna"/>
-		<typeAlias type="notice.model.NoticeBean" alias="MyNotice"/>
+		<typeAlias type="qna.model.QnaBean" alias="MyQna" />
+		<typeAlias type="notice.model.NoticeBean" alias="MyNotice" />
+		<typeAlias type="alcohol.model.AlcoholBean" alias="MyAlcohol" />
+		<typeAlias type="alcohol.model.AlCateBean" alias="MyAlCate" />
+		<typeAlias type="member.model.MemberBean" alias="MyMember" />
 	</typeAliases>
-	
+
 	<mappers>
-		<mapper resource="mybatis/qna.xml"/>
-		<mapper resource="mybatis/notice.xml"/>
+		<mapper resource="mybatis/qna.xml" />
+		<mapper resource="mybatis/notice.xml" />
+		<mapper resource="mybatis/alcohol.xml" />
+		<mapper resource="mybatis/member.xml" />
 	</mappers>
-  </configuration>
+</configuration>
 
 <!-- SqlMapConfig.xml -->

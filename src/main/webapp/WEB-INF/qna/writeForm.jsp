@@ -96,8 +96,7 @@ th, td {
 			</tr>
 			<tr>
 				<td>작성자</td>
-				<td><input type="text" size="48" maxlength="10" name="writer"
-					value="${qna.writer }"></td>
+				<td> ${loginInfo.id }</td>
 				<!-- 로그인 정보로 변경, 수정불가 -->
 			</tr>
 			<tr>

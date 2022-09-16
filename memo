@@ -33,7 +33,6 @@
 	insert into qna(num,writer,cateuser,cateopen,cate,subject,content,reg_date,ref,re_step,re_level,reply)									
 	values(q_seq.nextval,'kim','구매자','비밀글','상품/이벤트','상품 문의합니다.','언제 재입고 되나요?',sysdate,q_seq.currval,0,0,'no');									
 	
-	
 	insert into qna(num,writer,cateuser,cateopen,cate,subject,content,reg_date,ref,re_step,re_level,reply) 
 	values(q_seq.nextval,'asd','구매자','비밀글','배송','문의합니다.','빠른출고바랍니다.',sysdate,q_seq.currval,0,0,'no');								
 	
@@ -55,16 +54,13 @@
 	col checkimage for a10
 	col content for a10
 	col reg_date for a10
+	col readcount for a10
 	col ref for a10
 	col re_step for a20
 	col re_level for a20
 	col reply for a20
 	
 	select * from qna;
-	
-	
-	
-	
 	
 	private String writer; //작성자, members의 num과 연결
 	private String cateuser; //구매자/판매자
@@ -81,23 +77,15 @@
 	private String re_level; //원글0, 답글1, 답답글2
 	private String reply;
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
 	-- notice					
 	drop sequence nseq;									
 	create sequence nseq									
@@ -116,8 +104,6 @@
 		content varchar2(500),
 		image varchar2(500) 
 	);				
-	
-	
 		
 	insert into notice(num,writer,subject,cate)									
 	values(nseq.nextval,'관리자','제목','공지');									
@@ -125,9 +111,18 @@
 	values(nseq.nextval,'관리자1','제목1','공지');									
 	insert into notice(num,writer,subject,cate,content)									
 	values(nseq.nextval,'관리자2','제목2','이벤트','내용은 이미지입니다.');									
+	commit;
 	
+	col num for a6
+	col writer for a10
+	col subject for a10
+	col cate for a10
+	col reg_date for a10
+	col readcount for a10
+	col content for a10
+	col image for a10
 	
-	
+	select * from notice;
 	
 	
 	

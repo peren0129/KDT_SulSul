@@ -31,11 +31,10 @@ th, td {
 				<tr style="text-align: center;">
 					<td align="right">${list.num }</td>
 					<td style="text-align: left !important;">
-						<!-- 관리자 아이디로 로그인시 ~~ 로 수정  --> <c:if
-							test="${fn:contains(list.cate, '이벤트')}">
-							<img src="resources/images/00_event.png" align="absmiddle">
-						</c:if> <a
-						href="detail.no?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a>
+						<c:if test="${fn:contains(list.cate, '이벤트')}">
+							<img src="resources/images/00_event.png" align="absmiddle" height="20px" width="30px">
+						</c:if>
+						<a href="detail.no?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a>
 
 						<!-- 파일 업로드 된 글 --> <c:if test="${list.image != null}">
 							<img src="resources/images/00_attach_file.png" align="absmiddle">

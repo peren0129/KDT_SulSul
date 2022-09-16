@@ -8,7 +8,7 @@ public class NoticeBean {
 	private String num;
 	private String writer; 
 	private String subject; 
-	private String category; 
+	private String cate; 
 	private Timestamp reg_date;
 	private int readcount;
 	private String content;
@@ -44,11 +44,11 @@ public class NoticeBean {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	public String getCategory() {
-		return category;
+	public String getCate() {
+		return cate;
 	}
-	public void setCategory(String category) {
-		this.category = category;
+	public void setCate(String cate) {
+		this.cate = cate;
 	}
 	public Timestamp getReg_date() {
 		return reg_date;

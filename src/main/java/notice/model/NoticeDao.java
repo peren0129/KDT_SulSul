@@ -35,4 +35,27 @@ public class NoticeDao {
 		return totalCount;
 	}
 	
+	public void insertData(NoticeBean no) {
+		System.out.println("insertData 2");
+		sqlSessionTemplate.insert(namespace+".insertData", no);
+		System.out.println("insertData 3");
+	}
+	
+	public NoticeBean getData(String num) {
+		NoticeBean no = sqlSessionTemplate.selectOne(namespace+".getData", num);
+		return no;	
+	}
+	
+	public void updateData(NoticeBean no) {
+		System.out.println("updateData 2");
+		sqlSessionTemplate.update(namespace+".updateData", no);
+		System.out.println("updateData 3");
+	}
+	
+	public int deleteData(String num) {
+		System.out.println("deleteData 2");
+		int cnt = sqlSessionTemplate.delete(namespace+".deleteData",num);
+		System.out.println("deleteData 3");
+		return cnt;
+	}
 }

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="alcohol.model.Alcohol">
+	
+	<!-- 카테고리 페이지 -->
+	<select id="GetAllAlCate" resultType="MyAlCate">
+		select * from alcategory 
+		order by num
+	</select>
+	
+	<insert id="InsertAlCate">
+		insert into alcategory 
+		values(alc_seq.nextval,#{cate})
+	</insert>
+	
+	<delete id="DeleteAlCate">
+		delete alcategory where num = #{num}
+	</delete>
+	
+	
+	<!-- 주류 리스트 페이지 -->
+	<insert id="InsertAlcohol">
+		insert into alcohol(num,name,code,category,brand,country,price,point,stock,content,image,input_date,exp_date,contentImage)									
+		values(al_seq.nextval,#{name},al_seq.currval,#{category},#{brand},#{country},#{price},#{point},#{stock},#{content},#{image},#{input_date},#{exp_date},#{contentImage})
+	</insert>
+	
+	<select id="GetTotalCount1" resultType="int">
+		select count(*) from alcohol
+		<if test="whatColumn=='category'">
+			where category like #{keyword}
+		</if>
+		<if test="whatColumn=='name'">
+			where name like #{keyword}
+		</if>
+		<if test="whatColumn=='brand'">
+			where brand like #{keyword}
+		</if>
+	</select>
+	
+	<select id="GetAllAlcohol" resultType="MyAlcohol">
+		select * from alcohol 
+		<if test="whatColumn=='category'">
+			where category like #{keyword}
+		</if>
+		<if test="whatColumn=='name'">
+			where name like #{keyword}
+		</if>
+		<if test="whatColumn=='brand'">
+			where brand like #{keyword}
+		</if>
+		order by num desc
+	</select>
+	
+	<select id="GetAlcoholByNum" resultType="MyAlcohol">
+		select * from alcohol where num = #{num}
+	</select>
+	
+	<update id="UpdateAlcohol">
+		update alcohol set name=#{name}, category=#{category}, brand=#{brand}, country=#{country}, price=#{price}, point=#{point}, stock=#{stock}, spec=#{spec}, content=#{content}, 
+		image=#{image}, input_date=#{input_date}, exp_date=#{exp_date}, contentImage=#{contentImage} where num=#{num}
+	</update>
+	
+	<delete id="DeleteAlcohol">
+		delete alcohol where num = #{num}
+	</delete>
+	
+	<!-- 메인 페이지 -->
+	<select id="GetNewAlcohol" resultType="MyAlcohol">
+		select num, name, price, image from 
+		(select num, name, price, image, rank() over(order by num desc) rank from alcohol) 
+		where rank between 1 and 4
+	</select>
+	
+</mapper>
