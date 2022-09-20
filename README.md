@@ -10,7 +10,7 @@
 	num number not null primary key,									
 	writer varchar2(100), --작성자, members의 num과 연결									
 	cateuser varchar2(100), --구매자/판매자									
-	cateopen varchar2(100), --비밀글/전체공개									
+	cateopen varchar2(100), --비공개/전체공개									
 	cate varchar2(100), --회원/정보관리,배송,반품/환불/교환/AS,영수증/증빙서류,상품/이벤트,기타									
 	subject varchar2(100),									
 	image varchar2(100),									
@@ -34,11 +34,11 @@
 	values(q_seq.nextval,'kim','구매자','전체공개','상품/이벤트','문의드립니다.','유통기한이 언제까지 인가요?',sysdate,q_seq.currval,0,0,'no');									
 
 	insert into qna(num,writer,cateuser,cateopen,cate,subject,content,reg_date,ref,re_step,re_level,reply)									
-	values(q_seq.nextval,'kim','구매자','비밀글','상품/이벤트','상품 문의합니다.','언제 재입고 되나요?',sysdate,q_seq.currval,0,0,'no');									
+	values(q_seq.nextval,'kim','구매자','비공개','상품/이벤트','상품 문의합니다.','언제 재입고 되나요?',sysdate,q_seq.currval,0,0,'no');									
 
 
 	insert into qna(num,writer,cateuser,cateopen,cate,subject,content,reg_date,ref,re_step,re_level,reply) 
-	values(q_seq.nextval,'asd','구매자','비밀글','배송','문의합니다.','빠른출고바랍니다.',sysdate,q_seq.currval,0,0,'no');								
+	values(q_seq.nextval,'asd','구매자','비공개','배송','문의합니다.','빠른출고바랍니다.',sysdate,q_seq.currval,0,0,'no');								
 
 	insert into qna(num,writer,cateuser,cateopen,cate,subject,content,reg_date,ref,re_step,re_level,reply) 
 	values(q_seq.nextval,'kim1','구매자','전체공개','상품/이벤트','문의','유통기한 언제까지?',sysdate,q_seq.currval,0,0,'no');
@@ -68,7 +68,7 @@
 
 	private String writer; //작성자, members의 num과 연결
 	private String cateuser; //구매자/판매자
-	private String cateopen; //비밀글/전체공개
+	private String cateopen; //비공개/전체공개
 	private String cate; //회원/정보관리,배송,반품/환불/교환/AS,영수증/증빙서류,상품/이벤트,키타
 	private String subject;
 	private String image;

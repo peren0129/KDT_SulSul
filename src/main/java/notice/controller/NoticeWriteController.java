@@ -15,22 +15,21 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import qna.model.QnaBean;
-import qna.model.QnaDao;
+import notice.model.NoticeBean;
+import notice.model.NoticeDao;
 
 @Controller
-public class QnaWriteController {
+public class NoticeWriteController {
 
-	private final String command = "/write.qna";
+	private final String command = "/write.no";
 	private String getPage = "/writeForm";
-	private String gotoPage = "redirect:/list.qna";
+	private String gotoPage = "redirect:/list.no";
 
 	@Autowired
-	private QnaDao qnaDao;
+	private NoticeDao noticeDao;
 	
 	@Autowired
 	ServletContext servletContext;
@@ -55,7 +54,7 @@ public class QnaWriteController {
 	}
 
 	@RequestMapping(value=command, method=RequestMethod.POST)
-	public ModelAndView write(@ModelAttribute("qna") @Valid QnaBean qna, BindingResult result,
+	public ModelAndView write(@ModelAttribute("notice") @Valid NoticeBean notice, BindingResult result,
 			HttpServletRequest request) {
 		System.out.println("WriteController_POST");
 		
@@ -68,15 +67,15 @@ public class QnaWriteController {
 			return mav;
 		}
 		
-		MultipartFile multi = qna.getUpload();
+		MultipartFile multi = notice.getUpload();
 		System.out.println("multi.getName():"+multi.getName());
 		System.out.println("multi.getOriginalFilename():"+multi.getOriginalFilename());
-		System.out.println("product.getImage():"+qna.getImage());
+		System.out.println("product.getImage():"+notice.getImage());
 		
-		qna.setReg_date(new Timestamp(System.currentTimeMillis())); 
+		notice.setReg_date(new Timestamp(System.currentTimeMillis())); 
 		
 		System.out.println("insert 1");
-		qnaDao.insertData(qna);
+		noticeDao.insertData(notice);
 		System.out.println("insert 4");
 		
 		String uploadPath = servletContext.getRealPath("/resources");

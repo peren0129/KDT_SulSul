@@ -19,8 +19,8 @@ import utility.Paging;
 
 @Controller
 public class NoticeListController {
-	private final String command = "/nList.no";
-	private String getPage = "/nList";
+	private final String command = "/list.no";
+	private String getPage = "/list";
 
 	@Autowired
 	private NoticeDao nDao;

@@ -62,7 +62,7 @@ table {
 			<!-- <a href="">베스트</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  -->
 			<a href="">마이페이지</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 			<a href="">장바구니</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
-			<a href="">게시판</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
+			<a href="list.no">게시판</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
 			<a href="">상품후기</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
 			<a href="list.qna">QNA</a>
 		</td>

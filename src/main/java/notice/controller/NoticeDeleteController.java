@@ -1,4 +1,4 @@
-package qna.controller;
+package notice.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import qna.model.QnaBean;
-import qna.model.QnaDao;
+import notice.model.NoticeBean;
+import notice.model.NoticeDao;
 
 @Controller
-public class QnaDeleteController {
-	private final String command="delete.qna";
-	private String getPage="redirect:/list.qna";
+public class NoticeDeleteController {
+	private final String command="delete.no";
+	private String getPage="redirect:/list.no";
 	
 	@Autowired
-	private QnaDao qnaDao;
+	private NoticeDao noticeDao;
 	
 	@Autowired
 	ServletContext servletContext;
@@ -33,7 +33,7 @@ public class QnaDeleteController {
 			HttpServletResponse response) throws IOException {
 		ModelAndView mav = new ModelAndView();
 
-		QnaBean qna = qnaDao.getData(num);
+		NoticeBean notice = noticeDao.getData(num);
 		/*
 			String deletePath = servletContext.getRealPath("/resources");
 			File delFile = new File(deletePath+"/"+qna.getImage()); 
@@ -41,7 +41,7 @@ public class QnaDeleteController {
 		 */
 		
 		//아래 나중에 잘 합쳐보자 ..
-		int cnt = qnaDao.deleteData(num);
+		int cnt = noticeDao.deleteData(num);
 		response.setContentType("text/html; charset=UTF-8"); //한글처리
 		PrintWriter writer = response.getWriter(); //연결다리
 		
@@ -51,7 +51,7 @@ public class QnaDeleteController {
 		*/
 		
 		mav.addObject("pageNumber",pageNumber);
-		mav.addObject("num",qna.getNum());
+		mav.addObject("num",notice.getNum());
 		mav.setViewName(getPage);
 		return mav;
 /*

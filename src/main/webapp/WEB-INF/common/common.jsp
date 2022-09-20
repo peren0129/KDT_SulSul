@@ -14,6 +14,8 @@
  --%>
  
 접속자 아이디 : ${loginInfo.id } <br>
-접속자 아이디 : ${sessionScope.loginInfo.id } <br><br>
 
+<%-- 
+접속자 아이디 : ${sessionScope.loginInfo.id } <br><br>
+ --%>
  

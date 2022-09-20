@@ -3,4 +3,4 @@
 start.jsp<br>
     
 <a href="list.qna">QNA</a>    <br><br>
-<a href="nList.no">Notice</a>  <br><br>  
+<a href="list.no">Notice</a>  <br><br>  
