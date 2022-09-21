@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
+<%@ include file="../mall/main_top.jsp"%>
+
 <!-- detailForm.jsp -->
 <br>
 <%-- <%=application.getRealPath("/resources")%> <br>
@@ -31,9 +33,9 @@
 	  }
 	 */
 </script>
-<style>
+<style> /* 모든 파일 스타일은 부트스트랩 적용하면서 삭제 */
 table {
-	width: 1000;
+	width: 1000px;
 	border-top: 1px solid #DCDCDC;
 	border-collapse: collapse;
 }
@@ -43,9 +45,10 @@ th, td {
 	padding: 10px;
 }
 </style>
+<%-- <c:set var="user" value="${qna.writer}"></c:set> --%>
 <center>
 	<h2>${qna.subject}</h2>
-	<hr style="width: 1000">
+	<hr>
 	<br>
 	<table>
 		<tr>
@@ -64,7 +67,7 @@ th, td {
 		<tr>
 			<td valign="top">첨부파일</td>
 			<td><c:if test="${qna.image != null}">
-					<img height=300 width=300
+					<img height=auto width=700
 						onclick="javascript:popupImage(this.src);"
 						src="<%=request.getContextPath()%>/resources/${qna.image}">
 				</c:if> <c:if test="${qna.image == null}">
@@ -75,8 +78,8 @@ th, td {
 
 		</tr>
 		<tr>
-			<!-- 관리자 아이디로 로그인시 ~~ 로 수정  -->
-			<c:if test="${fn:contains(qna.writer, '길동')}">
+			<!-- admin으로 로그인시 -->
+			<c:if test="${loginInfo.id eq 'admin'}">
 				<table width="840px" id="reply_area">
 					<tr reply_type="all" style="display: none">
 						<!-- 뒤에 댓글 붙이기 쉽게 선언 -->
@@ -141,16 +144,38 @@ th, td {
 			</c:if>
 		</tr>
 		<tr>
-			<td align="center" colspan="2"><br> <br> <input
-				type="button" value="글수정"
-				onClick="location.href='update.qna?num=${qna.num}&pageNumber=${pageNumber}'">
-				<input type="button" value="글삭제"
-				onClick="del('${qna.num}','${pageInfo.pageNumber }')"> <%-- onClick="location.href='delete.qna?num=${qna.num}&pageNumber=${pageNumber}'"> --%>
-				<%-- <input type="button" value="답글쓰기" onClick="location.href='reply.qna?ref=${qna.ref }&re_step=${qna.re_step }&re_level=${qna.re_level }'" > --%>
-				<input type="button" value="글목록"
-				onClick="document.location.href='list.qna?pageNumber=${pageNumber}'">
-			</td>
+			<c:choose>
+				<c:when test="${fn:contains(loginInfo.id, 'admin')}">
+					<td align="center" colspan="2"><br> <br> <input
+						type="button" value="글수정"
+						onClick="location.href='update.qna?num=${qna.num}&pageNumber=${pageNumber}'">
+						<input type="button" value="글삭제"
+						onClick="del('${qna.num}','${pageInfo.pageNumber }')"> 
+						<input type="button" value="글목록"
+						onClick="document.location.href='list.qna?pageNumber=${pageNumber}'">
+					</td>
+				</c:when>
+					<c:when test="${loginInfo.id eq qna.writer}">
+				<%-- <c:when test="${loginInfo.id eq 'user'}"> --%>
+					<td align="center" colspan="2"><br> <br> <input
+						type="button" value="글수정"
+						onClick="location.href='update.qna?num=${qna.num}&pageNumber=${pageNumber}'">
+						<input type="button" value="글삭제"
+						onClick="del('${qna.num}','${pageInfo.pageNumber }')"> 
+						<input type="button" value="글목록"
+						onClick="document.location.href='list.qna?pageNumber=${pageNumber}'">
+					</td>
+				</c:when>
+
+				<c:otherwise>
+					<td align="center" colspan="2"><input type="button"
+						value="글목록"
+						onClick="document.location.href='list.qna?pageNumber=${pageNumber}'">
+					</td>
+				</c:otherwise>
+			</c:choose>
 		</tr>
 
 	</table>
 </center>
+<%@ include file="../mall/main_bottom.jsp"%>

@@ -9,6 +9,7 @@ public class NoticeBean {
 	private String writer; 
 	private String subject; 
 	private String cate; 
+	private String cateopen; 
 	private Timestamp reg_date;
 	private int readcount;
 	private String content;
@@ -49,6 +50,12 @@ public class NoticeBean {
 	}
 	public void setCate(String cate) {
 		this.cate = cate;
+	}
+	public String getCateopen() {
+		return cateopen;
+	}
+	public void setCateopen(String cateopen) {
+		this.cateopen = cateopen;
 	}
 	public Timestamp getReg_date() {
 		return reg_date;

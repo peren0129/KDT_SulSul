@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
+<%@ include file="../mall/main_top.jsp" %>
 <!-- updateForm.jsp -->
 <br>
 <script type="text/javascript">
@@ -28,11 +29,9 @@
 	font-weight: bold;
 }
 table {
-	width: 1000;
 	border-top: 1px solid #DCDCDC;
 	border-collapse: collapse;
 }
-
 th, td {
 	border-bottom: 1px solid #DCDCDC;
 	padding: 10px;
@@ -45,7 +44,7 @@ th, td {
 <c:set var="cateList" value="<%=cateList%>"></c:set>
 
 <center>
-	<h2>QNA 수정</h2>
+	<h2>${qna.subject} 수정 (QNA)</h2>
 	<form:form commandName="qna" action="update.qna" method="post"
 		enctype="multipart/form-data">
 		<input type="hidden" name="num" value="${qna.num}">
@@ -67,15 +66,14 @@ th, td {
 						<option value="전체공개"
 							<c:if test="${fn:contains(qna.cateopen,'전체공개')}">selected</c:if>>전체공개
 						
-						<option value="비밀글"
-							<c:if test="${fn:contains(qna.cateopen,'비밀글')}">selected</c:if>>비밀글
+						<option value="비공개"
+							<c:if test="${fn:contains(qna.cateopen,'비공개')}">selected</c:if>>비공개
 				</select></td>
 			</tr>
 			<tr>
-				<td>작성자(수정)</td>
-				<td><input type="text" size="30" maxlength="10" name="writer"
-					value="${qna.writer }"></td>
-				<!-- 로그인 정보로 변경, 수정불가 -->
+				<td>작성자</td>
+				<td><input type="hidden" name="writer" value="${loginInfo.id }">
+					${loginInfo.id }</td>
 			</tr>
 			<tr>
 				<td>* 제목</td>
@@ -91,7 +89,7 @@ th, td {
 			<tr>
 				<td>첨부파일</td>
 				<td><c:if test="${qna.image != null}">
-						<img height=300 width=300;
+						<img height=auto width=300 
 							src="<%=request.getContextPath()%>/resources/${qna.image}">
 					</c:if> <c:if test="${qna.image == null}">
 						<small> 첨부된 파일이 없습니다.</small>
@@ -109,3 +107,4 @@ th, td {
 		<input type="submit" value="수정완료">
 	</form:form>
 </center>
+<%@ include file="../mall/main_bottom.jsp" %>

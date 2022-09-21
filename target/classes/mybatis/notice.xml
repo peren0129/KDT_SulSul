@@ -7,11 +7,8 @@
 
 	<select id="getAllData" resultType="MyNotice">
 		select * from notice
-		<if test="whatColumn == 'subject'">
+		<if test="whatColumn == 'cate'">
 			where subject like #{keyword}
-		</if>
-		<if test="whatColumn == 'writer'">
-			where writer like #{keyword}
 		</if>
 		order by num desc
 	</select>
@@ -34,8 +31,8 @@
 
 	<insert id="insertData">
 		insert into
-		notice(num,writer,cate,subject,image,content,reg_date,readcount)
-		values(nseq.nextval,#{writer},#{cate},#{subject},#{image},
+		notice(num,writer,cate,cateopen,subject,image,content,reg_date,readcount)
+		values(nseq.nextval,#{writer},#{cate},#{cateopen},#{subject},#{image},
 		#{content},#{reg_date},#{readcount,jdbcType=VARCHAR})
 	</insert>
 
@@ -46,7 +43,7 @@
 
 	<update id="updateData">
 		update notice
-		set writer=#{writer},cate=#{cate},subject=#{subject},content=#{content},image=#{image}
+		set writer=#{writer},cate=#{cate},cateopen=#{cateopen},subject=#{subject},content=#{content},image=#{image}
 		where num=#{num}
 	</update>
 
@@ -54,15 +51,4 @@
 		delete notice where num = #{num}
 	</delete>
 
-
-
 </mapper>
-
-
-<!-- #{reg_date} -->
-
-
-<!-- <insert id="insertData"> insert into qna(num,writer,cateopen,cate,subject,image,content,reg_date,readcount,ref,re_step,re_level,reply) 
-	values(q_seq.nextval,#{writer},#{cateopen},#{cate},#{subject},#{image}, #{content},#{reg_date},#{readcount,jdbcType=VARCHAR},q_seq.currval,0,0,'no') 
-	</insert> -->
-	

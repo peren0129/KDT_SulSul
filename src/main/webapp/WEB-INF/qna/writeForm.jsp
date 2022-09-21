@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
+<%@ include file="../mall/main_top.jsp" %>
 <!-- writeForm.jsp -->
 <br>
 <script src="https://code.jquery.com/jquery-1.6.1.min.js"
@@ -91,14 +92,14 @@ th, td {
 				<td>공개여부</td>
 				<td><select name="cateopen">
 						<option value="전체공개">전체공개
-						<option value="비밀글">비밀글
+						<option value="비공개">비공개
 				</select></td>
 			</tr>
 			<tr>
 				<td>작성자</td>
-				<td> ${loginInfo.id }</td>
+				<td><input type="hidden" name="writer" value="${loginInfo.id }"> ${loginInfo.id }</td>
 				<!-- 로그인 정보로 변경, 수정불가 -->
-			</tr>
+			</tr> 
 			<tr>
 				<td>* 제목</td>
 				<td><input type="text" size="48" name="subject" value="${qna.subject }">
@@ -136,5 +137,5 @@ th, td {
 		<input type="submit" value="등록">
 	<!-- 	<input type="button" value="등록" onclick="write()"> -->
 	</form:form>
-
 </center>
+<%@ include file="../mall/main_bottom.jsp" %>

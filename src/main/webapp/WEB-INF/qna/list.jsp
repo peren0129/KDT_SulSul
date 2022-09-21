@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
+<%@ include file="../mall/main_top.jsp" %>
+
 <!-- list.jsp -->
 <br>
 <style>
@@ -11,7 +13,7 @@ th, td {
 </style>
 <center>
 	<h2>QNA</h2>
-	<small>글목록(전체 글: ${pageInfo.totalCount})</small>
+	<small color="#696969">글목록(전체 글: ${pageInfo.totalCount})</small>
 	<hr style="width: 1000px;">
 	<table>
 		<tr>
@@ -44,24 +46,36 @@ th, td {
 								height="15">
 							<img src="resources/images/re.gif">
 					</c:if>
-					 --%> <!-- 관리자 아이디로 로그인시 ~~ 로 수정  --> <c:if
-							test="${fn:contains(list.cateopen, '비밀글')}">
+					 --%> 
+					 
+					 <!-- 관리자 아이디로 로그인 또는 작성자 본인의 비공개 --> 
+					<c:choose>
+						<c:when test="${fn:contains(list.cateopen, '비공개')}">
 							<img src="resources/images/00_secret.png" align="absmiddle">
-						</c:if> <a
-						href="detail.qna?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a>
-
-						<!-- 파일 업로드 된 글 --> <c:if test="${list.image != null}">
-							<img src="resources/images/00_attach_file.png" align="absmiddle">
-						</c:if>
+							<c:choose>
+								<c:when test="${loginInfo.id eq 'admin'}">
+									<a href="detail.qna?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a>
+								</c:when>
+								<c:when test="${loginInfo.id eq list.writer}">
+									<a href="detail.qna?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a>
+								</c:when>
+								<c:otherwise>
+										${list.subject}
+								</c:otherwise> 
+							</c:choose>
+						</c:when> 
+						<c:otherwise>
+								<a href="detail.qna?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a>
+						</c:otherwise> 
+					</c:choose>
+					
+					<!-- 파일 업로드 된 글 --> 
+					<c:if test="${list.image != null}">
+						<img src="resources/images/00_attach_file.png" align="absmiddle">
+					</c:if>
 					</td>
 
 					<td>${list.writer}</td>
-
-
-
-
-
-
 					<td align="right">${ list.readcount }</td>
 
 
@@ -87,3 +101,5 @@ th, td {
 </center>
 
 <center>${pageInfo.pagingHtml }</center>
+
+<%@ include file="../mall/main_bottom.jsp" %>

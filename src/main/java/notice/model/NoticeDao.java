@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import utility.Paging;
 
 @Component
-public class NoticeDao {
+public class NoticeDao { 
 	
 	private String namespace = "notice.model.Notice";
 	
