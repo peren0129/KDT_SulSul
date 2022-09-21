@@ -16,7 +16,7 @@
 	 return;
 	 }
 	 }  */
-
+	 var content = CKEDITOR.instances.content.getData();
 	function back() {
 		if (confirm("목록으로 돌아가시겠습니까?") == true) {
 			location.href = "list.no";
