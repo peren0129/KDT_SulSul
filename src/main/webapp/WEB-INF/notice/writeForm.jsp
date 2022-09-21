@@ -11,7 +11,7 @@
 	/* function write() {
 	 if (confirm("등록하시겠습니까 ?") == true) {
 	 alert("문의글이 등록되었습니다.");
-	 location.href = "write.qna";
+	 location.href = "write.no";
 	 } else {
 	 return;
 	 }
@@ -19,7 +19,7 @@
 
 	function back() {
 		if (confirm("목록으로 돌아가시겠습니까?") == true) {
-			location.href = "list.qna";
+			location.href = "list.no";
 		} else {
 			return;
 		}
@@ -70,7 +70,7 @@ th, td {
 </style>
 
 <center>
-	<h2>QNA</h2>
+	<h2>NOTICE</h2>
 	<form:form commandName="notice" action="write.no" method="post"
 		enctype="multipart/form-data">
 		<hr style="width: 1000;">

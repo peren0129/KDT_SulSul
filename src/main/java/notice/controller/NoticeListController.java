@@ -31,7 +31,7 @@ public class NoticeListController {
 			@RequestParam(value="keyword",required = false) String keyword,
 			@RequestParam(value="pageNumber",required = false) String pageNumber) {
 
-		System.out.println("QnaListController : "+whatColumn+", "+keyword+", "+pageNumber);
+		System.out.println("NoticeListController : "+whatColumn+", "+keyword+", "+pageNumber);
 
 		Map<String,String> map = new HashMap<String,String>(); 
 		map.put("whatColumn", whatColumn); 

@@ -44,7 +44,7 @@ th, td {
 <c:set var="cateList" value="<%=cateList%>"></c:set>
 
 <center>
-	<h2>QNA 수정</h2>
+	<h2>${qna.subject} 수정 (QNA)</h2>
 	<form:form commandName="qna" action="update.qna" method="post"
 		enctype="multipart/form-data">
 		<input type="hidden" name="num" value="${qna.num}">

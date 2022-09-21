@@ -39,7 +39,7 @@ th, td {
 									<img src="resources/images/00_event.png" align="absmiddle"
 										height="20px" width="30px">
 								</c:if> 
-								<c:if test="${list.cateopen eq '비공개'}">
+								<!-- 파일 업로드 된 글 --><c:if test="${list.cateopen eq '비공개'}">
 									<img src="resources/images/00_secret.png" align="absmiddle">
 								</c:if> 
 									<a href="detail.no?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a>

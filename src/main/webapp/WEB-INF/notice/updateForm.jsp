@@ -7,7 +7,7 @@
 <script type="text/javascript">
 	function back(num, pageNumber) {
 		if (confirm("수정을 취소하시겠습니까?") == true) {
-			location.href = "detail.qna?num=" + num + "&pageNumber="
+			location.href = "detail.no?num=" + num + "&pageNumber="
 					+ pageNumber;
 		} else {
 			return;
@@ -33,8 +33,8 @@ th, td {
 </style>
 
 <center>
-	<h2>Notice 수정</h2>
-	<form:form commandName="qna" action="update.qna" method="post"
+	<h2>${notice.subject} 수정 (Notice)</h2>
+	<form:form commandName="no" action="update.no" method="post"
 		enctype="multipart/form-data">
 		<input type="hidden" name="num" value="${notice.num}">
 		<input type="hidden" name="pageNumber" value="${pageNumber}">
@@ -93,7 +93,7 @@ th, td {
 		</table>
 		<br>
 			<input type="button" value="이전"
-				onclick="back('${qna.num}','${pageInfo.pageNumber }')"> <input
+				onclick="back('${notice.num}','${pageInfo.pageNumber }')"> <input
 				type="submit" value="수정완료">
 	</form:form>
 </center>
