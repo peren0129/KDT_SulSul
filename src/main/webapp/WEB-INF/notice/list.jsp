@@ -39,11 +39,11 @@ th, td {
 									<img src="resources/images/00_event.png" align="absmiddle"
 										height="20px" width="30px">
 								</c:if> 
-								<!-- 파일 업로드 된 글 --><c:if test="${list.cateopen eq '비공개'}">
+								<!-- 비공개 --><c:if test="${list.cateopen eq '비공개'}">
 									<img src="resources/images/00_secret.png" align="absmiddle">
 								</c:if> 
 									<a href="detail.no?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a>
-								<!-- 파일 업로드 된 글 --> <c:if test="${list.image != null}">
+								<!-- 파일 업로드 --> <c:if test="${list.image != null}">
 									<img src="resources/images/00_attach_file.png"
 										align="absmiddle">
 								</c:if></td>
@@ -65,7 +65,7 @@ th, td {
 									</c:if> <a
 									href="detail.no?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a>
 
-									<!-- 파일 업로드 된 글 --> <c:if test="${list.image != null}">
+									<!-- 파일 업로드 --> <c:if test="${list.image != null}">
 										<img src="resources/images/00_attach_file.png"
 											align="absmiddle">
 									</c:if></td>

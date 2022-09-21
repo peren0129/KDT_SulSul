@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <%@ include file="../common/common.jsp"%>
 <%@ include file="../mall/main_top.jsp" %>
+
 <!-- writeForm.jsp -->
 <br>
 <script src="https://code.jquery.com/jquery-1.6.1.min.js"
 	integrity="sha256-x4Q3aWDzFj3HYLwBnnLl/teCA3RaVRDGmZKjnR2P53Y="
 	crossorigin="anonymous"></script>
+	<script src="//cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
 <script type="text/javascript">
 	/* function write() {
 	 if (confirm("등록하시겠습니까 ?") == true) {
@@ -16,7 +19,6 @@
 	 return;
 	 }
 	 }  */
-
 	function back() {
 		if (confirm("목록으로 돌아가시겠습니까?") == true) {
 			location.href = "list.no";
@@ -26,6 +28,10 @@
 	}
 
 	$(document).ready(function() {
+		CKEDITOR.replace( 'content' );
+        CKEDITOR.config.height = 500;
+		var content = CKEDITOR.instances.content.getData();
+        
 		create();
 
 		$("#refreshBtn").click(function(e) {
@@ -103,12 +109,11 @@ th, td {
 			<tr>
 				<td>* 본문</td>
 				<td><textarea name="content" rows="10" cols="50"
-						placeholder="내용을 작성해주세요.">${notice.content }</textarea> <form:errors
-						cssClass="err" path="content" /></td>
+						placeholder="내용을 작성해주세요.">${notice.content }</textarea></td>
 			</tr>
 			<tr>
 				<td>첨부파일</td>
-				<td><input type="file" name="upload" value="">${notice.upload }</td>
+				<td><input type="file" name="upload" value="" multiple>${notice.upload }</td>
 			</tr>
 		</table>
 		<br>
