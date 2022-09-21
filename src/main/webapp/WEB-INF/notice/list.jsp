@@ -64,7 +64,6 @@ th, td {
 											height="20px" width="30px">
 									</c:if> <a
 									href="detail.no?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a>
-
 									<!-- 파일 업로드 --> <c:if test="${list.image != null}">
 										<img src="resources/images/00_attach_file.png"
 											align="absmiddle">
