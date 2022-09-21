@@ -2,11 +2,13 @@ package notice.model;
 
 import java.sql.Timestamp;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 public class NoticeBean {
 	private String num;
 	private String writer; 
+	@NotEmpty(message = "제목을 입력하세요.")
 	private String subject; 
 	private String cate; 
 	private String cateopen; 

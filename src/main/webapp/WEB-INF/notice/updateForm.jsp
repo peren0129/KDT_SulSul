@@ -4,7 +4,13 @@
 <%@ include file="../mall/main_top.jsp"%>
 <!-- updateForm.jsp -->
 <br>
+<script src="//cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
 <script type="text/javascript">
+$(document).ready(function() {
+	CKEDITOR.replace( 'content' );
+    CKEDITOR.config.height = 500;
+	var content = CKEDITOR.instances.content.getData();});
+	
 	function back(num, pageNumber) {
 		if (confirm("수정을 취소하시겠습니까?") == true) {
 			location.href = "detail.no?num=" + num + "&pageNumber="
@@ -84,11 +90,11 @@ th, td {
 				<td>첨부파일</td>
 				<td><c:if test="${notice.image != null}">
 						<img height=auto width=300 
-							src="<%=request.getContextPath()%>/resources/${notice.image}">
+							src="<%=request.getContextPath()%>/resources/${notice.image}" >
 					</c:if> <c:if test="${notice.image == null}">
 						<small> 첨부된 파일이 없습니다.</small>
 					</c:if><br>
-				<br> <input type="file" name="upload" value="${notice.image}"></td>
+				<br> <input type="file" name="upload" value="${notice.image}" multiple></td>
 			</tr>
 		</table>
 		<br>
