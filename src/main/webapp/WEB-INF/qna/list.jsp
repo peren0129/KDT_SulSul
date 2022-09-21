@@ -13,7 +13,7 @@ th, td {
 </style>
 <center>
 	<h2>QNA</h2>
-	<small color="#696969">글목록(전체 글: ${pageInfo.totalCount})</small>
+	<font color="#696969"> <small>글목록(전체 글: ${pageInfo.totalCount})</small></font>
 	<hr style="width: 1000px;">
 	<table>
 		<tr>
