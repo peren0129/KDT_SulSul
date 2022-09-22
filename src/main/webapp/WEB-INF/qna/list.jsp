@@ -43,7 +43,7 @@ th, td {
 							<c:when test="${fn:contains(list.cateopen, '비공개')}">
 								<img src="resources/images/00_secret.png" align="absmiddle">
 								<c:choose>
-									<c:when test="${loginInfo.id eq 'admin'}">
+									<c:when test="${fn:contains(loginInfo.id, 'admin')}">
 										<a
 											href="detail.qna?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a>
 									</c:when>

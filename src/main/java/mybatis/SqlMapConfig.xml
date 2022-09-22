@@ -7,6 +7,7 @@
 
 	<typeAliases>
 		<typeAlias type="qna.model.QnaBean" alias="MyQna" />
+		<typeAlias type="qna.model.QcommentBean" alias="MyComment" />
 		<typeAlias type="notice.model.NoticeBean" alias="MyNotice" />
 		<typeAlias type="alcohol.model.AlcoholBean" alias="MyAlcohol" />
 		<typeAlias type="alcohol.model.AlCateBean" alias="MyAlCate" />
