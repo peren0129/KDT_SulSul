@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
-<%@ include file="../mall/main_top.jsp" %>
+<%@ include file="../mall/main_top.jsp"%>
 
 <!-- list.jsp -->
 <br>
@@ -13,7 +13,8 @@ th, td {
 </style>
 <center>
 	<h2>QNA</h2>
-	<font color="#696969"> <small>글목록(전체 글: ${pageInfo.totalCount})</small></font>
+	<font color="#696969"> <small>글목록(전체 글:
+			${pageInfo.totalCount})</small></font>
 	<hr style="width: 1000px;">
 	<table>
 		<tr>
@@ -32,55 +33,41 @@ th, td {
 		<c:if test="${ fn:length(lists) > 0 }">
 			<c:forEach var="list" items="${ lists }">
 				<tr style="text-align: center;">
-					<%-- <td align="right">${list.num }</td> --%>
 					<!-- &nbsp -->
 					<td><fmt:parseDate var="reg_date" value="${ list.reg_date }"
 							pattern="yyyy-MM-dd" /> <fmt:formatDate var="formatDate"
 							value="${ reg_date }" pattern="yyyy-MM-dd" /> ${formatDate}</td>
 					<td>[${ list.cate }]</td>
 					<td id="sub" style="text-align: left !important;">
-						<%-- t
-					<c:if test="${ list.re_level > 0 }">
-							<fmt:parseNumber var="re_level" value="${ list.re_level }" />
-							<img src="resources/images/level.gif" width="${ re_level*20 }"
-								height="15">
-							<img src="resources/images/re.gif">
-					</c:if>
-					 --%> 
-					 
-					 <!-- 관리자 아이디로 로그인 또는 작성자 본인의 비공개 --> 
-					<c:choose>
-						<c:when test="${fn:contains(list.cateopen, '비공개')}">
-							<img src="resources/images/00_secret.png" align="absmiddle">
-							<c:choose>
-								<c:when test="${loginInfo.id eq 'admin'}">
-									<a href="detail.qna?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a>
-								</c:when>
-								<c:when test="${loginInfo.id eq list.writer}">
-									<a href="detail.qna?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a>
-								</c:when>
-								<c:otherwise>
-										${list.subject}
-								</c:otherwise> 
-							</c:choose>
-						</c:when> 
-						<c:otherwise>
-								<a href="detail.qna?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a>
-						</c:otherwise> 
-					</c:choose>
-					
-					<!-- 파일 업로드 된 글 --> 
-					<c:if test="${list.image != null}">
-						<img src="resources/images/00_attach_file.png" align="absmiddle">
-					</c:if>
+						<!-- 관리자 아이디로 로그인 또는 작성자 본인의 비공개 --> <c:choose>
+							<c:when test="${fn:contains(list.cateopen, '비공개')}">
+								<img src="resources/images/00_secret.png" align="absmiddle">
+								<c:choose>
+									<c:when test="${loginInfo.id eq 'admin'}">
+										<a
+											href="detail.qna?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a>
+									</c:when>
+									<c:when test="${loginInfo.id eq list.writer}">
+										<a
+											href="detail.qna?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a>
+									</c:when>
+									<c:otherwise>
+										<a onclick="alert('관리자 또는 작성자 본인만 조회 가능합니다.')">
+											${list.subject}</a>
+									</c:otherwise>
+								</c:choose>
+							</c:when>
+							<c:otherwise>
+								<a
+									href="detail.qna?num=${list.num}&pageNumber=${pageInfo.pageNumber}">${list.subject}</a>
+							</c:otherwise>
+						</c:choose> <!-- 파일 업로드 된 글 --> <c:if test="${list.image != null}">
+							<img src="resources/images/00_attach_file.png" align="absmiddle">
+						</c:if>
 					</td>
 
 					<td>${list.writer}</td>
 					<td align="right">${ list.readcount }</td>
-
-
-
-
 					<td align="center">${ list.reply }</td>
 				</tr>
 			</c:forEach>
@@ -102,4 +89,4 @@ th, td {
 
 <center>${pageInfo.pagingHtml }</center>
 
-<%@ include file="../mall/main_bottom.jsp" %>
+<%@ include file="../mall/main_bottom.jsp"%>

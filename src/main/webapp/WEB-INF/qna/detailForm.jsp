@@ -67,7 +67,7 @@ th, td {
 		<tr>
 			<td valign="top">첨부파일</td>
 			<td><c:if test="${qna.image != null}">
-					<img height=auto width=700
+					<img height=auto width=800
 						onclick="javascript:popupImage(this.src);"
 						src="<%=request.getContextPath()%>/resources/${qna.image}">
 				</c:if> <c:if test="${qna.image == null}">
@@ -80,6 +80,26 @@ th, td {
 		<tr>
 			<!-- admin으로 로그인시 -->
 			<c:if test="${loginInfo.id eq 'admin'}">
+
+
+<table width="840px">
+				<tr><td>답변을 작성하세요. ( 관리자 전용 )</td></tr>
+				<tr class="card my-4">
+					<td align="center">
+						<form name="comment-form" action="insertComment.qna"
+							method="post" autocomplete="off">
+							<div>
+								<input type="hidden" name="num" value="num" />
+								<textarea name="content" rows="4" cols="90"></textarea>
+							</div>
+							<button type="submit">등록</button>
+						</form>
+					</td>
+				</tr>
+</table>
+<%-- 
+
+
 				<table width="840px" id="reply_area">
 					<tr reply_type="all" style="display: none">
 						<!-- 뒤에 댓글 붙이기 쉽게 선언 -->
@@ -136,7 +156,7 @@ th, td {
 						</td>
 					</tr>
 				</table>
-
+ --%>
 				<!--
 						<input type="button" value="답변하기" onClick="location.href='reply.qna?num=${qna.num}&pageNumber=${pageNumber}'" >
 						<input type="button" value="답변완료" onClick="comp()">  이거할람 form필요

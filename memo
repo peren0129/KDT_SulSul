@@ -118,8 +118,27 @@
 	
 	
 	
+	-- comment					
+	drop sequence qcoseq;									
+	create sequence qcoseq									
+	start with 1									
+	increment by 1									
+	nocache;
+			
+	drop table qcomment cascade constraints;				
+	create table qcomment(				
+		num number not null primary key,			
+		writer varchar2(50) not null,		
+		content varchar2(300),
+		reg_date date default sysdate	
+	);	
 	
+	insert into qcomment(num,writer,content)									
+	values(qcoseq.nextval,'admin','첨부파일 또는 주문번호 첨부 부탁드립니다.');	
+	commit;
+
 	
+	select * from qcomment;
 	
 	
 	
