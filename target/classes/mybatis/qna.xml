@@ -29,7 +29,8 @@
 	<update id="addReadcount">
 		update qna
 		set readcount = readcount+1
-		where num = #{num}
+		where num =
+		#{num}
 	</update>
 
 	<insert id="insertData">
@@ -41,7 +42,8 @@
 
 	<select id="getData" resultType="MyQna">
 		select * from qna
-		where num = #{num}
+		where num =
+		#{num}
 	</select>
 
 	<update id="updateData">
@@ -55,7 +57,28 @@
 		delete qna where num = #{num}
 	</delete>
 
+	<insert id="insertComment">
+		insert into
+		qcomment(num,writer,content)
+		values(qcoseq.nextval,#{writer},#{content})
+	</insert>
 
+	<select id="getComment" resultType="MyComment">
+		select * from qcomment
+		where
+		num = #{num}
+	</select>
+
+	<update id="updateComment">
+		update qcomment
+		set 
+		content=#{content}
+		where num=#{num}
+	</update>
+
+	<delete id="deleteComment">
+		delete qcomment where num = #{num}
+	</delete>
 
 </mapper>
 
