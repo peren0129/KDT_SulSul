@@ -56,14 +56,14 @@ public class QnaUpdateController {
 		}
 		
 		//원래 이미지 삭제
-		String originalPath = servletContext.getRealPath("/resources/")+originalImg;
+		String originalPath = servletContext.getRealPath("/resources/qna/")+originalImg;
 		File file1 = new File(originalPath);
 		file1.delete();
 
 		//새로운 이미지 등록
 		MultipartFile multi = qna.getUpload();
 		
-		String newPath = servletContext.getRealPath("/resources")+"/"+qna.getImage(); //업로드 위치 설정
+		String newPath = servletContext.getRealPath("/resources/qna")+"/"+qna.getImage(); //업로드 위치 설정
 		File file2 = new File(newPath); //파일로 만들기
 		try {
 			multi.transferTo(file2); //파일 업로드

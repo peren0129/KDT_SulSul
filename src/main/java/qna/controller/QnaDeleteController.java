@@ -1,5 +1,6 @@
 package qna.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -34,11 +35,11 @@ public class QnaDeleteController {
 		ModelAndView mav = new ModelAndView();
 
 		QnaBean qna = qnaDao.getData(num);
-		/*
-			String deletePath = servletContext.getRealPath("/resources");
+		
+			String deletePath = servletContext.getRealPath("/resources/qna");
 			File delFile = new File(deletePath+"/"+qna.getImage()); 
 			delFile.delete();
-		 */
+		 
 		
 		//아래 나중에 잘 합쳐보자 ..
 		int cnt = qnaDao.deleteData(num);

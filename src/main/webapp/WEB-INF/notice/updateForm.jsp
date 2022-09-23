@@ -40,7 +40,7 @@ th, td {
 
 <center>
 	<h2>${notice.subject} 수정 (Notice)</h2>
-	<form:form commandName="notice" action="update.no" method="post"
+	<form:form commandName="no" action="update.no" method="post"
 		enctype="multipart/form-data">
 		<input type="hidden" name="num" value="${notice.num}">
 		<input type="hidden" name="pageNumber" value="${pageNumber}">

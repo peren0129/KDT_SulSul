@@ -11,17 +11,9 @@
 	crossorigin="anonymous"></script>
 	<script src="//cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
 <script type="text/javascript">
-	/* function write() {
-	 if (confirm("등록하시겠습니까 ?") == true) {
-	 alert("문의글이 등록되었습니다.");
-	 location.href = "write.no";
-	 } else {
-	 return;
-	 }
-	 }  */
-	function back() {
+	function back(pageNumber) {
 		if (confirm("목록으로 돌아가시겠습니까?") == true) {
-			location.href = "list.no";
+			location.href = "list.no?pageNumber=" + pageNumber;
 		} else {
 			return;
 		}
@@ -118,7 +110,7 @@ th, td {
 		</table>
 		<br>
 		<br>
-		<input type="button" value="이전" onclick="back()">
+		<input type="button" value="이전" onclick="back('${pageInfo.pageNumber }')">
 		<input type="submit" value="등록">
 	<!-- 	<input type="button" value="등록" onclick="write()"> -->
 	</form:form>

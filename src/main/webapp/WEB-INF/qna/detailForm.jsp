@@ -5,7 +5,7 @@
 
 <!-- detailForm.jsp -->
 <br>
-<%-- <%=application.getRealPath("/resources")%> <br>
+<%-- <%=application.getRealPath("/resources/qna")%> <br>
 <%=application.getContextPath()%><br> 
 <%=request.getContextPath()%><br> --%>
 <script type="text/javascript">
@@ -38,22 +38,7 @@ function getCommentList(){
 		}
 	})
 }
-	
-	/*  
-	function popupImage(url){
-	    var img = new Image();
-	    var scWidth = screen.availWidth; //현재 사용중인 스크린 크기를 구함
-	    var scHeight = screen.availHeight;
-	    var left = (parseInt(scWidth)-650)/2; //팝업창 위치 조절
-	    var top = (parseInt(scHeight)-900)/2;
-	    img.src = url;
-	    var img_width = img.width-500; //팝업창 크기 조절
-	    var win_width = img.width-500;
-	    var height = img.height-290;
-	    var openImage = window.open('','_blank','width='+img_width+',height='+heigh',top='+top+',left='+left+',menubars=no,scrollbars=auto');
-	    openImage.document.write("<style>body{margin:0px;}</style><a href = # onclick = window.close() onfocus=this.blur()><img src = '"+url+"'width='"+win_width+"'></a>");
-	  }
-	 */
+
 </script>
 <style> /* 모든 파일 스타일은 부트스트랩 적용하면서 삭제 */
 table {
@@ -93,9 +78,7 @@ th, td {
 		<tr>
 			<td valign="top">첨부파일</td>
 			<td><c:if test="${qna.image != null}">
-					<img height=auto width=800
-						onclick="javascript:popupImage(this.src);"
-						src="<%=request.getContextPath()%>/resources/${qna.image}">
+					<img height=auto width=800 src="<%=request.getContextPath()%>/resources/qna/${qna.image}">
 				</c:if> <c:if test="${qna.image == null}">
 					<small> 첨부된 파일이 없습니다.</small>
 				</c:if><br> <br></td>
@@ -202,7 +185,6 @@ th, td {
 					</td>
 				</c:when>
 					<c:when test="${loginInfo.id eq qna.writer}">
-				<%-- <c:when test="${loginInfo.id eq 'user'}"> --%>
 					<td align="center" colspan="2"><br> <br> <input
 						type="button" value="글수정"
 						onClick="location.href='update.qna?num=${qna.num}&pageNumber=${pageNumber}'">
