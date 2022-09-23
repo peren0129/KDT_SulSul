@@ -107,7 +107,7 @@ th, td {
 					<form:errors cssClass="err" path="subject" /></td>
 			</tr>
 			<tr>
-				<td>* 본문</td>
+				<td>본문</td>
 				<td><textarea name="content" rows="10" cols="50"
 						placeholder="내용을 작성해주세요.">${notice.content }</textarea></td>
 			</tr>

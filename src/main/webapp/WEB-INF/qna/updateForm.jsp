@@ -94,7 +94,7 @@ String[] cateList = { "회원/정보관리", "배송", "반품/환불/교환/AS"
 					<form:errors cssClass="err" path="subject" /></td>
 			</tr>
 			<tr>
-				<td>* 본문</td>
+				<td>본문</td>
 				<td><textarea name="content" rows="10" cols="50"
 						placeholder="내용을 작성해주세요.">${qna.content }</textarea> 
 						<form:errors cssClass="err" path="content" /></td>

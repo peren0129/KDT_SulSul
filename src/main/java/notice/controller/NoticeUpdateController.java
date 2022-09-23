@@ -41,8 +41,8 @@ public class NoticeUpdateController {
 	}
 
 	@RequestMapping(value=command,method=RequestMethod.POST) 
-	public ModelAndView write(
-			@ModelAttribute("board") @Valid NoticeBean notice, BindingResult result,
+	public ModelAndView update(
+			@ModelAttribute("notice") @Valid NoticeBean notice, BindingResult result,
 			@RequestParam(value="pageNumber",required=false) String pageNumber,
 			HttpServletResponse response) throws IOException {
 

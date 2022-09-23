@@ -24,9 +24,9 @@ public class NoticeBean {
 	public void setUpload(MultipartFile upload) { // upload=a.jpg X
 		System.out.println("setUpload(MultipartFile upload)");
 		this.upload = upload;
-		System.out.println("setUpload upload:" + upload);
-		System.out.println("upload.getName():"+upload.getName());
-		System.out.println("upload.getOriginalFilename():"+upload.getOriginalFilename());
+		//System.out.println("setUpload upload:" + upload);
+		//System.out.println("upload.getName():"+upload.getName());
+		//System.out.println("upload.getOriginalFilename():"+upload.getOriginalFilename());
 		setImage(upload.getOriginalFilename()); 
 	}
 	public String getNum() {
