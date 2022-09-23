@@ -8,7 +8,7 @@
 <%-- <%=application.getRealPath("/resources")%> <br>
 <%=application.getContextPath()%><br> 
 <%=request.getContextPath()%><br> --%>
-<script>
+<script type="text/javascript">
 	function del(num, pageNumber) {
 		var chk = confirm("삭제하시겠습니까?");
 		if (chk) {
@@ -16,7 +16,29 @@
 					+ pageNumber;
 		}
 	}
-
+$(document).ready(function(){
+	getCommentList();
+})
+function getCommentList(){
+	var pnum = $('input[name=pnum]').val();
+	$.ajax({
+		type: 'Get',
+		url:'/getCommentList',
+		data: {pnum},
+		success: function(result){
+			console.log(result);
+			for(var i=0; i<result.length; i++){
+				var str = "<div>"+result[i].content+"<div></hr>"
+				$("#comment").append(str);
+			}
+		},
+		error : function(result){
+		},
+		complete : function(){
+		}
+	})
+}
+	
 	/*  
 	function popupImage(url){
 	    var img = new Image();
@@ -43,6 +65,10 @@ table {
 th, td {
 	border-bottom: 1px solid #DCDCDC;
 	padding: 10px;
+}
+.err {
+	color: red;
+	font-weight: bold;
 }
 </style>
 <%-- <c:set var="user" value="${qna.writer}"></c:set> --%>
@@ -79,27 +105,27 @@ th, td {
 		</tr>
 		<tr>
 			<!-- admin으로 로그인시 -->
-			<c:if test="${loginInfo.id eq 'admin'}">
+			<c:if test="${fn:contains(loginInfo.id, 'admin')}">
+				<table width="840px">
+					<tr>
+						<td>답변을 작성하세요. ( ${loginInfo.id }님 )</td>
+					</tr>
+					<tr class="card my-4">
+						<td align="center"><form:form commandName="qco"
+								action="insertComment.qna" method="post">
+								<div>
+									<input type="hidden" name="pnum" th:value="*{pnum}" /> 
+									<input type="hidden" name="writer" value="${loginInfo.id} " />
+									<textarea name="content" rows="4" cols="90"></textarea>
+									<form:errors cssClass="err" path="content" />
+								</div>
+								<button type="submit">등록</button>
+							</form:form></td>
+					</tr>
+				</table>
 
 
-<table width="840px">
-				<tr><td>답변을 작성하세요. ( 관리자 전용 )</td></tr>
-				<tr class="card my-4">
-					<td align="center">
-						<form name="comment-form" action="insertComment.qna"
-							method="post" autocomplete="off">
-							<div>
-								<input type="hidden" name="num" value="num" />
-								<textarea name="content" rows="4" cols="90"></textarea>
-							</div>
-							<button type="submit">등록</button>
-						</form>
-					</td>
-				</tr>
-</table>
-<%-- 
-
-
+				<%-- 
 				<table width="840px" id="reply_area">
 					<tr reply_type="all" style="display: none">
 						<!-- 뒤에 댓글 붙이기 쉽게 선언 -->

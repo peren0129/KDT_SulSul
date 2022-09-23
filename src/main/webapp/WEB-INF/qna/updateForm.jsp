@@ -59,6 +59,7 @@ String[] cateList = { "회원/정보관리", "배송", "반품/환불/교환/AS"
 		enctype="multipart/form-data">
 		<input type="hidden" name="num" value="${qna.num}">
 		<input type="hidden" name="pageNumber" value="${pageNumber}">
+		<input type="hidden" name="originalImg" value="${qna.image }">
 		<hr style="width: 1000;">
 		<table border="0">
 			<tr>

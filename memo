@@ -127,13 +127,14 @@
 			
 	drop table qcomment cascade constraints;				
 	create table qcomment(				
-		num number not null primary key,			
+		comnum number not null primary key,			
+		pnum int, --pagenum
 		writer varchar2(50) not null,		
 		content varchar2(300),
 		reg_date date default sysdate	
 	);	
 	
-	insert into qcomment(num,writer,content)									
+	insert into qcomment(comnum,writer,content)									
 	values(qcoseq.nextval,'admin','첨부파일 또는 주문번호 첨부 부탁드립니다.');	
 	commit;
 
