@@ -1,3 +1,4 @@
+
 package qna.model;
 
 import java.sql.Date;

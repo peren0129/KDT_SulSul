@@ -56,6 +56,11 @@
 		delete qna where num = #{num}
 	</delete>
 
+
+
+
+
+<!-- commemt -->
 	<insert id="insertComment">
 		insert into
 		qcomment(comnum,pnum,writer,content)
@@ -72,19 +77,26 @@
 		update qcomment
 		set 
 		content=#{content}
-		where comnum = #{comnum}
+		where comnum = #{pnum}
 	</update>
 
 	<delete id="deleteComment">
-		delete qcomment where comnum = #{comnum}
+		delete qcomment where comnum = #{pnum}
 	</delete>
 
-	<select id="selectCommentList" resultType="MyComment">
+<!-- 	<select id="selectCommentList" resultType="MyComment">
 		select * from qcomment
 		where
-		pnum = #{pnum}
-	</select>
+		comnum = #{pnum}
+	</select> -->
+<!-- commemt -->
 
+	
+	
+
+
+	
+	
 
 </mapper>
 

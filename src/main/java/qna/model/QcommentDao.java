@@ -1,3 +1,5 @@
+/*
+
 package qna.model;
 
 import java.util.ArrayList;
@@ -62,6 +64,6 @@ public class QcommentDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
 }
+
+*/

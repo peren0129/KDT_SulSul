@@ -10,7 +10,6 @@ public class QnaBean {
 	private String writer; //작성자, members의 num과 연결
 	private String cateuser; //구매자/판매자
 	private String cateopen; //비공개/전체공개
-	//@NotEmpty(message = "카테고리를 선택하세요.")
 	private String cate; //회원/정보관리,배송,반품/환불/교환/AS,영수증/증빙서류,상품/이벤트,키타
 	@NotEmpty(message = "제목을 입력하세요.")
 	private String subject;
