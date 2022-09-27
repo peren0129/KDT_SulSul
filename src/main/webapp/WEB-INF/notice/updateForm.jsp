@@ -81,10 +81,9 @@ th, td {
 						path="subject" /></td>
 			</tr>
 			<tr>
-				<td>* 본문</td>
+				<td>본문</td>
 				<td><textarea name="content" rows="10" cols="50"
-						placeholder="내용을 작성해주세요.">${notice.content }</textarea> <form:errors
-						cssClass="err" path="content" /></td>
+						placeholder="내용을 작성해주세요.">${notice.content }</textarea> </td>
 			</tr>
 			<tr>
 				<td>첨부파일</td>

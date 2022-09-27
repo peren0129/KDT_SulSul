@@ -1,9 +1,10 @@
 package notice.controller;
 
 
+import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import notice.model.NoticeBean;
@@ -28,6 +30,9 @@ public class NoticeUpdateController {
 
 	@Autowired
 	private NoticeDao noticeDao;
+	
+	@Autowired
+	ServletContext servletContext;
 
 	@RequestMapping(value=command,method=RequestMethod.GET)
 	public String update(Model model, @RequestParam("num") String num,
@@ -41,9 +46,10 @@ public class NoticeUpdateController {
 	}
 
 	@RequestMapping(value=command,method=RequestMethod.POST) 
-	public ModelAndView write(
-			@ModelAttribute("board") @Valid NoticeBean notice, BindingResult result,
+	public ModelAndView update(
+			@ModelAttribute("notice") @Valid NoticeBean notice, BindingResult result,
 			@RequestParam(value="pageNumber",required=false) String pageNumber,
+			@RequestParam(value= "originalImg",required=false) String originalImg,
 			HttpServletResponse response) throws IOException {
 
 		System.out.println("NoticeUpdateController_POST");
@@ -53,17 +59,29 @@ public class NoticeUpdateController {
 			mav.setViewName(getPage);
 			return mav;
 		}
-		response.setContentType("text/html; charset=UTF-8"); //한글처리
-		PrintWriter writer = response.getWriter(); //연결다리
 		
-		//아래 나중에 지우기
+		//원래 이미지 삭제
+		String originalPath = servletContext.getRealPath("/resources/notice/")+originalImg;
+		File file1 = new File(originalPath);
+		file1.delete();
+
+		//새로운 이미지 등록
+		MultipartFile multi = notice.getUpload();
+		
+		String newPath = servletContext.getRealPath("/resources/notice")+"/"+notice.getImage(); //업로드 위치 설정
+		File file2 = new File(newPath); //파일로 만들기
+		try {
+			multi.transferTo(file2); //파일 업로드
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		System.out.println("NoticeUpdateController 1");
 		noticeDao.updateData(notice);
 		System.out.println("NoticeUpdateController 4");
-		/* alert을 이렇게 띄우면 넘어가는 주소 인식이 안됨..
-		writer.println("<script type='text/javascript'> alert('수정되었습니다.'); </script>");
-		writer.flush();
-		*/
+
 		mav.addObject("pageNumber",pageNumber);
 		mav.addObject("num",notice.getNum());
 		mav.setViewName(gotoPage);

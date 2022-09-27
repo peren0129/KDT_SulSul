@@ -82,7 +82,7 @@ public class QnaWriteController {
 		qnaDao.insertData(qna);
 		System.out.println("insert 4");
 
-		String uploadPath = servletContext.getRealPath("/resources");
+		String uploadPath = servletContext.getRealPath("/resources/qna");
 		System.out.println("uploadPath:"+uploadPath);
 
 		File file = new File(uploadPath+"/"+multi.getOriginalFilename());

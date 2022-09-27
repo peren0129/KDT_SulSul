@@ -1,12 +1,9 @@
 package qna.controller;
 
-
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import qna.model.QnaBean;
 import qna.model.QnaDao;
@@ -54,19 +50,20 @@ public class QnaUpdateController {
 			Model model) {
 
 		System.out.println("QnaUpdateController_POST");
-		ModelAndView mav = new ModelAndView();
 		if(result.hasErrors()) { 
 			model.addAttribute("pageNumber",pageNumber);
 			return getPage;
 		}
+		
 		//원래 이미지 삭제
-		String originalPath = servletContext.getRealPath("/resources/")+originalImg;
+		String originalPath = servletContext.getRealPath("/resources/qna/")+originalImg;
 		File file1 = new File(originalPath);
 		file1.delete();
 
 		//새로운 이미지 등록
 		MultipartFile multi = qna.getUpload();
-		String newPath = servletContext.getRealPath("/resources")+"/"+qna.getImage(); //업로드 위치 설정
+		
+		String newPath = servletContext.getRealPath("/resources/qna")+"/"+qna.getImage(); //업로드 위치 설정
 		File file2 = new File(newPath); //파일로 만들기
 		try {
 			multi.transferTo(file2); //파일 업로드
