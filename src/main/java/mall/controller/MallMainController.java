@@ -26,7 +26,11 @@ public class MallMainController {
 		List<AlcoholBean> lists = new ArrayList<AlcoholBean>();
 		lists = alcoholDao.getNewAlcohol();
 		
+		List<AlcoholBean> lists2 = new ArrayList<AlcoholBean>();
+		lists2 = alcoholDao.getNewSnack();
+		
 		model.addAttribute("lists", lists);
+		model.addAttribute("lists2", lists2);
 		
 		return getPage;
 	}

@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     
+<style type="text/css">
+table {
+	text-align: center;
+	align: center;
+	margin: auto;
+}
+</style>
 
 <br>
 <br>
@@ -20,6 +26,8 @@
 		<td align=center>이메일</td>
 		<td>&nbsp;${member.email}</td>
 	</tr>
+	
+	
 	<tr>
 		<td align=center>성인인증</td>
 		<td>&nbsp;${member.rrn1}-*******</td>

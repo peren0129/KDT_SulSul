@@ -1,19 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
-updateAlcoholForm.jsp
+<!-- updateAlcoholForm.jsp<br> -->
+<%@ include file="main_top.jsp"%>
+
 <br>
-
+<hr>
+    
 <center>
+<h2><b>주류 상품 수정</b></h2>
 
-	<h2>주류 상품 수정</h2>
+<hr>
+
 
 	<form action="updateAlcohol.ad" method="post"
 		enctype="multipart/form-data">
 		<input type="hidden" name="num" value="${ alcohol.num }">
 		<input type="hidden" name="originImg" value="${ alcohol.image }">
 		<input type="hidden" name="originImg2" value="${ alcohol.contentImage }">
-		<table border="1">
+		
+		<table  class="table table-sm" style="width: 40%">
 			<tr>
 				<td>카테고리</td>
 				<td><select name="category">
@@ -89,3 +95,5 @@ updateAlcoholForm.jsp
 	</form>
 
 </center>
+
+<%@ include file="../mall/main_bottom.jsp" %>

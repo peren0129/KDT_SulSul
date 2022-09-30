@@ -48,21 +48,32 @@ public class MemberDao {
 		result = sqlSessionTemplate.selectOne(namespace+".IdCheck",inputid);
 		return result;
 	}
+	
+	public int Pwcheck(String inputpw) {
+		int result = -1;
+		result = sqlSessionTemplate.selectOne(namespace+".Pwcheck",inputpw);
+		return result;
+	}
 
 	public MemberBean getMember(String id) {
 		MemberBean mbean = null;
 		mbean = sqlSessionTemplate.selectOne(namespace+".GetMember", id);
 		return mbean;
 	}
+	public MemberBean updatePw(String password) {
+		MemberBean mbean = null;
+		mbean = sqlSessionTemplate.selectOne(namespace+".UpdateGo", password);
+		return mbean;
+	}
 
-	public MemberBean selectMemberByNum(String num) {
-		MemberBean mb = sqlSessionTemplate.selectOne(namespace+".GetMemberDetail",num);
+	public MemberBean selectMemberByNum(String id) {
+		MemberBean mb = sqlSessionTemplate.selectOne(namespace+".GetMemberDetail",id);
 		return mb;
 	}
 
 	public void updateMember(MemberBean mb) {
 		int cnt = sqlSessionTemplate.update(namespace+".UpdateMember",mb);
-		System.out.println("업데이트 Dao"+cnt);
+		System.out.println("�뾽�뜲�씠�듃 Dao"+cnt);
 	}
 
 	public int memberDelete(String num) {
@@ -71,14 +82,62 @@ public class MemberDao {
 		return cnt;
 	}
 
-	public MemberBean getMemberById(String name,String email) {
+	public String getMemberById(MemberBean member) {
+		
+		System.out.println("�븘�뵒李�1Dao:"+member.getName());
+		System.out.println("컨트롤러mail:"+member.getEmail1());//null
+		System.out.println("컨트롤러mail:"+member.getEmail2());//null
+		String id = sqlSessionTemplate.selectOne(namespace+".GetMemberById", member);
+		System.out.println("컨트롤러2Dao:"+id);// admin �굹�샂
+		return id;
+	}
+
+	public String updategoMember(String pw) {
+		String ugo = sqlSessionTemplate.selectOne(namespace+".UpdateGo", pw);
+		System.out.println("Dao ugo>>"+ugo);
+		return ugo;
+	}
+
+	public String getMemberByPw(MemberBean member) {
+		String pw = sqlSessionTemplate.selectOne(namespace+".GetMemberByPw", member);
+		return pw;
+	}
+	
+	//혜인 멤버+포인트
+	public void updateMpoint(String id, double mpoint) {
+	MemberBean mb = new MemberBean();
+	mb.setId(id);
+	mb.setMpoint((int) mpoint); 
+	sqlSessionTemplate.update(namespace+".UpdateMpoint",mb); 		
+	}
+	//멤버-포인트
+	public void updateMpoint2(String id, double mpoint) {
 		MemberBean mb = new MemberBean();
-		mb.setName(name);
-		mb.setEmail(email);
-		System.out.println("아디찾1Dao:"+mb);
-		mb = sqlSessionTemplate.selectOne(namespace+".GetMemberById",mb);
-		System.out.println("아디찾2Dao:"+mb);
-		return mb;
+		mb.setId(id);
+		mb.setMpoint((int) mpoint);
+		sqlSessionTemplate.update(namespace+".UpdateMpoint2",mb);
+	}
+	
+	
+	
+	//박이랑
+	public int getSellerTotalCount(Map<String, String> map) {
+		int result = sqlSessionTemplate.selectOne(namespace+".GetSellerTotalCount",map);
+		return result;
+	}
+
+	public List<MemberBean> getAllSeller(Paging pageInfo, Map<String, String> map) {
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
+		
+		List<MemberBean> lists=new ArrayList<MemberBean>();
+		lists=sqlSessionTemplate.selectList(namespace+".GetAllSeller",map,rowBounds);
+		return lists;
+	}
+
+	public int getSaleItems(String id) {
+		
+		int count =sqlSessionTemplate.selectOne(namespace+".GetSaleItems",id);
+		return count;
 	}
 	
 }

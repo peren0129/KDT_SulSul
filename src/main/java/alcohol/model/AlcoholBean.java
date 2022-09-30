@@ -39,6 +39,7 @@ public class AlcoholBean {
 	private String num;	
 	@NotEmpty(message = "상품명 누락")
 	private String name;	
+	private String product;
 	private String code;
 	@NotEmpty(message = "카테고리 누락")
 	private String category;//선택한 카테고리
@@ -55,11 +56,60 @@ public class AlcoholBean {
 	private String exp_date; //유통기한		
 	private String delivery;
 	
+	private int orderqty;  //새로만음 주문수량 위해
+	private boolean flag; //새로만듬 유통기한 체크위해
+	private String memid; //새로만듬 판매자id
+	private int appr; //새로만듬 판매자 승인여부
+	
+	private Integer readcount;
+	
+	
+	public Integer getReadcount() {
+		return readcount;
+	}
+	public void setReadcount(Integer readcount) {
+		this.readcount = readcount;
+	}
+	
+	
+	public int getOrderqty() {
+		return orderqty;
+	}
+	public void setOrderqty(int orderqty) {
+		this.orderqty = orderqty;
+	}
+	public boolean isFlag() {
+		return flag;
+	}
+	public void setFlag(boolean flag) {
+		this.flag = flag;
+	}
+	public String getMemid() {
+		return memid;
+	}
+	public void setMemid(String memid) {
+		this.memid = memid;
+	}
+	public int getAppr() {
+		return appr;
+	}
+	public void setAppr(int appr) {
+		this.appr = appr;
+	}
+	
+	
+	
 	public String getNum() {
 		return num;
 	}
 	public void setNum(String num) {
 		this.num = num;
+	}
+	public String getProduct() {
+		return product;
+	}
+	public void setProduct(String product) {
+		this.product = product;
 	}
 	public String getName() {
 		return name;
@@ -150,6 +200,15 @@ public class AlcoholBean {
 	}
 	public void setDelivery(String delivery) {
 		this.delivery = delivery;
+	}
+	
+	@Override
+	public String toString() {
+		return "MyProduct [num=" + num + ", name=" + name + ", code=" + code + ", category=" + category + ", brand="
+				+ brand + ", country=" + country + ", price=" + price + ", point=" + point + ", qty=" + qty + ", stock="
+				+ stock + ", spec=" + spec + ", heart=" + heart + ", content=" + content + ", image=" + image
+				+ ", input_date=" + input_date + ", exp_date=" + exp_date + ", delivery=" + delivery + ", contentimage="
+				+ contentImage + "]";
 	}
 	
 	
