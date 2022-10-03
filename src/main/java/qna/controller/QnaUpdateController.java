@@ -46,7 +46,7 @@ public class QnaUpdateController {
 	public String update(
 			@ModelAttribute("qna") @Valid QnaBean qna, BindingResult result,
 			@RequestParam(value="pageNumber",required=false) String pageNumber,
-			@RequestParam("originalImg") String originalImg,
+			@RequestParam(value="originalImg", required = false) String originalImg,
 			Model model) {
 
 		System.out.println("QnaUpdateController_POST");

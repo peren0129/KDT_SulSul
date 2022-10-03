@@ -1,6 +1,8 @@
 package admin.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,10 +47,10 @@ public class AdminAlcoholListController {
 		//System.out.println("keyword "+keyword);
 		
 		//페이징
-		int totalCount = alcoholDao.getTotalCount(map);
+		int totalCount = alcoholDao.getTotalCount1(map);
 		String url = request.getContextPath()+"/"+command;
 		
-		Paging pageInfo = new Paging(pageNumber,null,totalCount,url,whatColumn,keyword,null);
+		Paging pageInfo = new Paging(pageNumber,"5",totalCount,url,whatColumn,keyword,null);
 		
 		//주류 리스트 가져오기
 		List<AlcoholBean> lists = new ArrayList<AlcoholBean>();

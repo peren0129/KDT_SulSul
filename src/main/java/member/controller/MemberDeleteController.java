@@ -14,7 +14,7 @@ import member.model.MemberDao;
 @Controller
 public class MemberDeleteController {
 	public final String command = "delete.mem";
-	public String getPage = "redirect:/list.mem";
+	public String getPage = "redirect:/login.mem";
 	
 	@Autowired
 	private MemberDao memberDao;
@@ -28,6 +28,7 @@ public class MemberDeleteController {
 			@RequestParam(value="pageNumber",required=false)String pageNumber,
 			Model model) {
 		
+		System.out.println("pageNumber"+pageNumber);
 		MemberBean mb = memberDao.selectMemberByNum(num);
 		
 	//	String deletePath = servletContext.getRealPath("/resources");
@@ -35,8 +36,10 @@ public class MemberDeleteController {
 		int cnt = memberDao.memberDelete(num);
 		
 		System.out.println("delete컨트롤러:::"+pageNumber);
+		//return getPage+"?pageNumber="+pageNumber;
 		
-		return getPage+"?pageNumber="+pageNumber;
+		
+		return getPage;
 		
 	}
 

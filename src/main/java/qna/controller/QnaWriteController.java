@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
+import java.util.UUID;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -41,17 +41,17 @@ public class QnaWriteController {
 	@RequestMapping(value=command, method=RequestMethod.GET)
 	public String write(HttpSession session,HttpServletResponse response) throws IOException {
 		System.out.println("WriteController_GET");
-		response.setContentType("text/html; charset=UTF-8"); //한글처리
+		response.setContentType("text/html; charset=UTF-8"); //�븳湲�泥섎━
 		PrintWriter writer = response.getWriter();
-		// 로그인하면 loginInfo session설정
-		if(session.getAttribute("loginInfo") == null) { // 로그인 안했으면
+		// 濡쒓렇�씤�븯硫� loginInfo session�꽕�젙
+		if(session.getAttribute("loginInfo") == null) { // 濡쒓렇�씤 �븞�뻽�쑝硫�
 			session.setAttribute("destination", "redirect:/write.qna");
-			writer.println("<script type='text/javascript'> alert('로그인이 필요한 기능입니다.');location.href='login.mem';</script>");
+			writer.println("<script type='text/javascript'> alert('濡쒓렇�씤�씠 �븘�슂�븳 湲곕뒫�엯�땲�떎.');location.href='login.mem';</script>");
 			writer.flush();
 			writer.close();
 			return null;
 		}
-		else { // 로그인했으면
+		else { // 濡쒓렇�씤�뻽�쑝硫�
 			return getPage;
 		}
 	}
@@ -81,7 +81,11 @@ public class QnaWriteController {
 		System.out.println("insert 1");
 		qnaDao.insertData(qna);
 		System.out.println("insert 4");
-
+		
+		/*
+		 * UUID uuid = UUID.randomUUID(); String uuidName = uuid.toString()+"_";
+		 */
+		
 		String uploadPath = servletContext.getRealPath("/resources/qna");
 		System.out.println("uploadPath:"+uploadPath);
 
@@ -97,18 +101,5 @@ public class QnaWriteController {
 		mav.setViewName(gotoPage);
 		return mav;
 	}
-
-	/*  @RequestParm이 안됨 
-	   // 글 작성 captcha 테스트
-    public String boardWrite(HttpSession session, @RequestParam String captcha) {
-        String captchaValue = (String) session.getAttribute("captcha");
-        if (captcha == null || !captchaValue.equals(captcha)) {
-            return "redirect:/board/write"; // 글 작성 페이지로 이동
-        }
-
-        // TODO 글 작성 처리
-        return "redirect:/board/5"; // 작성한 게시글 페이지로 이동
-    }
-	 */
 
 }

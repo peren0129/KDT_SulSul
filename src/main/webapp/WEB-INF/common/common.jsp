@@ -8,14 +8,3 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
-<%-- 
-<%MemberBean member=(MemberBean)session.getAttribute("loginInfo"); %>
-접속자 아이디 : <%=member.getId()%>
- --%>
- 
-접속자 아이디 : ${loginInfo.id } <br>
-
-<%-- 
-접속자 아이디 : ${sessionScope.loginInfo.id } <br><br>
- --%>
- 

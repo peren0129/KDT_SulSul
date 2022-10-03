@@ -46,7 +46,7 @@ public class QnaDao {
 	}
 	
 	public void updateData(QnaBean qna) {
-		int cnt = sqlSessionTemplate.update(namespace+".updateData", qna);
+		sqlSessionTemplate.update(namespace+".updateData", qna);
 	}
 
 	public int deleteData(String num) {
@@ -56,54 +56,8 @@ public class QnaDao {
 		return cnt;
 	}
 	
-
-// ----------- 리뷰  ---------------
-	public List<QcommentBean> getComment1(String ref) {
-		List<QcommentBean> list = new ArrayList<QcommentBean>();
-
-		list = sqlSessionTemplate.selectList(namespace + ".getComment");
-		System.out.println("------------ review dao--------");
-		System.out.println(ref);
-		for (QcommentBean review : list) {
-			System.out.println(review);
-		}
-		return list;
-	}
-
-	public List<QcommentBean> getComment(String num) {
-		List<QcommentBean> list = sqlSessionTemplate.selectList(namespace + ".getComment", Integer.parseInt(num));
-		return list;
-	}
-	
-	public void insertComment(QcommentBean comment) {
-		sqlSessionTemplate.insert(namespace + ".insertComment", comment);
-	}
-	
-	public int updateComment(int pnum) {
-		return sqlSessionTemplate.insert(namespace + ".updateComment", pnum);
-	}
-	
-	public int selectRecomm(int pnum) {
-		return sqlSessionTemplate.selectOne(namespace + ".selectRecomm", pnum);
-	}
-	
-	public int checkBuyFlag(String memberID, int productID) {
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("memberID", memberID);
-		map.put("productID", Integer.toString(productID));
+	public void reply(QnaBean qna) {
+		sqlSessionTemplate.update(namespace+".reply", qna);
 		
-		return sqlSessionTemplate.selectOne(namespace + ".SelectCheckbuyFlag", map);
 	}
-	
-	public int checkDuplecateReview(String memberID, int productID) {
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("memberID", memberID);
-		map.put("productID", Integer.toString(productID));
-		
-		return sqlSessionTemplate.selectOne(namespace + ".CheckDuplecateReview", map);
-	}
-
-// ----------- 리뷰 끝 ---------------
-	
-	
 } 

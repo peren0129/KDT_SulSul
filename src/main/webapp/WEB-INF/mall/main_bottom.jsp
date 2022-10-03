@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- main_bottom.jsp -->
-</td>
-		</tr>
+
+<table style="width: 90%">
 		<tr>
 		 	<td colspan="2" height="2px" bgcolor="black"></td>
 		 </tr>

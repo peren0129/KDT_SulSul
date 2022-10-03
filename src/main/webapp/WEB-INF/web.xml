@@ -104,6 +104,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+		
 	<servlet-mapping>
 		<servlet-name>notice</servlet-name>
 		<url-pattern>*.no</url-pattern>
@@ -118,6 +119,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+		
 	<servlet-mapping>
 		<servlet-name>review</servlet-name>
 		<url-pattern>*.re</url-pattern>
@@ -132,6 +134,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+		
 	<servlet-mapping>
 		<servlet-name>qna</servlet-name>
 		<url-pattern>*.qna</url-pattern>
@@ -155,6 +158,8 @@
 		<servlet-name>admin</servlet-name>
 		<url-pattern>*.ad</url-pattern>
 	</servlet-mapping>
+	
+		
 
 
 </web-app>

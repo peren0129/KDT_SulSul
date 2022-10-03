@@ -2,26 +2,29 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
 <%@ include file="../mall/main_top.jsp"%>
-<!-- list.jsp -->
-<br>
-<style>
-th, td {
-	border-bottom: 1px solid #DCDCDC;
-	padding: 10px 0px;
-}
-</style>
+<!-- list.jsp <br> -->
+
 <center>
+	<br>
+	<hr>
 	<h2>NOTICE</h2>
-	<font color="#696969"> <small>글목록(전체 글:
-			${pageInfo.totalCount})</small></font>
-	<hr style="width: 1000px;">
-	<table>
-		<tr>
-			<th width="50" align="left">번호</th>
-			<th width="400">제목</th>
-			<th width="150">날짜</th>
-			<th width="100">작성자</th>
-			<th width="100">조회수</th>
+	<%-- <font color="#696969" style="margin: 20px"> <small>글목록(전체 글:
+			${pageInfo.totalCount})</small></font> --%>
+	<hr>
+	
+<%-- 	<div align="left" style="margin-left: 130;">
+	<font color="#696969" style="margin: 20px;"> <small>글목록(전체
+			글: ${pageInfo.totalCount})</small></font>
+	</div> --%>
+	
+	
+	<table class="table table-hover" style="width: 80%;">
+		<tr align="center">
+			<th width="5%">번호</th>
+			<th>제목</th>
+			<th width="10%">날짜</th>
+			<th>작성자</th>
+			<th width="7%">조회수</th>
 		</tr>
 
 		<c:if test="${ fn:length(lists) eq 0 }">
@@ -29,11 +32,10 @@ th, td {
 		</c:if>
 		<c:if test="${fn:length(lists) > 0 }">
 			<c:forEach var="list" items="${ lists }">
-
 				<c:choose>
 					<c:when test="${fn:contains(loginInfo.id, 'admin')}">
 						<tr style="text-align: center;">
-							<td align="left">${list.num }</td>
+							<td>${list.num }</td>
 							<td style="text-align: left !important;">
 								<c:if test="${list.cate eq '이벤트'}">
 									<img src="resources/images/00_event.png" align="absmiddle"
@@ -51,7 +53,7 @@ th, td {
 									pattern="yyyy-MM-dd" /> <fmt:formatDate var="formatDate"
 									value="${ reg_date }" pattern="yyyy-MM-dd" /> ${formatDate}</td>
 							<td>${list.writer}</td>
-							<td align="right">${ list.readcount }</td>
+							<td>${list.readcount }</td>
 						</tr>
 					</c:when>
 					<c:when test="${not fn:contains(loginInfo.id, 'admin')}">
@@ -73,7 +75,7 @@ th, td {
 										var="formatDate" value="${ reg_date }" pattern="yyyy-MM-dd" />
 									${formatDate}</td>
 								<td>${list.writer}</td>
-								<td align="right">${ list.readcount }</td>
+								<td>${list.readcount }</td>
 							</tr>
 						</c:if>
 					</c:when>
@@ -83,19 +85,12 @@ th, td {
 
 	</table>
 	<br>
-	<!-- 	<form action="list.no" method="get">
-		<select name="whatColumn">
-			<option value="cate">공지</option>
-			<option value="cate">이벤트</option>
-		</select> <input type="text" name="keyword"> <input type="submit"
-			value="검색">
-	</form> -->
 	<c:if test="${loginInfo.id eq 'admin'}">
-		<input type="button" value="공지글 작성"
+		<input type="button" value="공지글 작성" class="btn btn-primary"
 			onclick="window.location='write.no'">
 	</c:if>
 </center>
-
+<br>
 <center>${pageInfo.pagingHtml }</center>
 <%@ include file="../mall/main_bottom.jsp"%>
 
